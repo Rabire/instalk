@@ -1,3 +1,9 @@
+function delay(time) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, time);
+  });
+}
+
 module.exports = async (page, target) => {
   console.log(`going on ${target} profile...`);
   await page.goto(`https://www.instagram.com/${target}`, {
@@ -14,23 +20,15 @@ module.exports = async (page, target) => {
 
   await page.click('a[class="-nal3 "]'); // followers link
 
-  console.log("scrolling in the followers list...");
   await page.waitForFunction(
-    () => document.querySelectorAll('div[class="isgrP"]').length
+    () => document.querySelectorAll('div[class="isgrP"]').length // scrollable followers modal
   );
 
-  let followersLoaded = await page.evaluate(
-    () => document.querySelector('div[class="PZuss"]').children.length
-  );
-  while (followersLoaded < targetFollowersCount) {
+  await console.log("scrolling in the followers list...");
+  for (let i = 1; i < totalLoopstogatAllFollowers; i++) {
     await page.evaluate(() => {
-      document.querySelector('div[class="isgrP"]').scroll(0, 9999999999);
+      document.querySelector('div[class="isgrP"]').scroll(0, 120000);
     });
-
-    followersLoaded = await page.evaluate(
-      () => document.querySelector('div[class="PZuss"]').children.length
-    );
-
-    await console.log({ followersLoaded });
+    await delay(1000);
   }
 };
