@@ -16,8 +16,9 @@ const stalk = async (credentials, target) => {
   await console.log({ followers });
   await console.log(followers.length);
 
-  await page.screenshot({ path: "./src/screenshot-test.png" });
+  // await page.screenshot({ path: "./src/screenshot-test.png" });
   await browser.close();
 };
 
-stalk(credentials, "_hamzatt_");
+// stalk(credentials, "_hamzatt_");
+stalk(credentials, "rabire_");
