@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer");
-const credentials = require("./credentials");
+const credentials = require("./data/credentials");
 const login = require("./scraping/login");
 const getTargetFollowers = require("./scraping/getTargetFollowers");
 
