@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const credentials = require("./credentials");
-const login = require("./login");
-const getTargetFollowers = require("./getTargetFollowers");
+const login = require("./scraping/login");
+const getTargetFollowers = require("./scraping/getTargetFollowers");
 
 const stalk = async (credentials, target) => {
   const browser = await puppeteer.launch({
