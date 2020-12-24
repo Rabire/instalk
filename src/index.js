@@ -1,9 +1,9 @@
 const puppeteer = require("puppeteer");
-const credentials = require("./data/credentials");
+const botCredentials = require("./data/credentials");
 const login = require("./scraping/login");
 const getFollowers = require("./scraping/getFollowers");
 
-const stalk = async (credentials, target) => {
+const stalk = async (botCredentials, target) => {
   const browser = await puppeteer.launch({
     headless: false, // if true => hide Chromium
     args: ["--window-size=1920,1080"],
@@ -11,7 +11,7 @@ const stalk = async (credentials, target) => {
   });
   const page = await browser.newPage();
 
-  await login(page, credentials);
+  await login(page, botCredentials);
   const targetFollowers = await getFollowers(page, target);
   await console.log({
     targetFollowers,
@@ -22,5 +22,5 @@ const stalk = async (credentials, target) => {
   await browser.close();
 };
 
-// stalk(credentials, "_hamzatt_");
-stalk(credentials, "rabire_");
+// stalk(botCredentials, "_hamzatt_");
+stalk(botCredentials, "rabire_");
