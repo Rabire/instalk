@@ -20,4 +20,4 @@ const stalk = async (credentials, target) => {
   await browser.close();
 };
 
-stalk(credentials, "rabire_");
+stalk(credentials, "_hamzatt_");
