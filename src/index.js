@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const credentials = require("./data/credentials");
 const login = require("./scraping/login");
-const getTargetFollowers = require("./scraping/getTargetFollowers");
+const getFollowers = require("./scraping/getFollowers");
 
 const stalk = async (credentials, target) => {
   const browser = await puppeteer.launch({
@@ -12,9 +12,11 @@ const stalk = async (credentials, target) => {
   const page = await browser.newPage();
 
   await login(page, credentials);
-  const followers = await getTargetFollowers(page, target);
-  await console.log({ followers });
-  await console.log(followers.length);
+  const targetFollowers = await getFollowers(page, target);
+  await console.log({
+    targetFollowers,
+    targetFollowersCount: targetFollowers.length,
+  });
 
   // await page.screenshot({ path: "./src/screenshot-test.png" });
   await browser.close();
