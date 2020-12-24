@@ -12,10 +12,12 @@ const stalk = async (credentials, target) => {
   const page = await browser.newPage();
 
   await login(page, credentials);
-  getTargetFollowers(page, target);
+  const followers = await getTargetFollowers(page, target);
+  await console.log({ followers });
+  await console.log(followers.length);
 
-  // await page.screenshot({ path: "screenshot-test.png" });
-  // await browser.close();
+  await page.screenshot({ path: "screenshot-test.png" });
+  await browser.close();
 };
 
-stalk(credentials, "_hamzatt_");
+stalk(credentials, "rabire_");

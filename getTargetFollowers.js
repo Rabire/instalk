@@ -25,10 +25,19 @@ module.exports = async (page, target) => {
   );
 
   await console.log("scrolling in the followers list...");
-  for (let i = 1; i < totalLoopstogatAllFollowers; i++) {
+
+  for (let i = 1; i < totalLoopstogatAllFollowers + 1; i++) {
     await page.evaluate(() => {
-      document.querySelector('div[class="isgrP"]').scroll(0, 120000);
+      document.querySelector('div[class="isgrP"]').scroll(0, 120000); // scrollable followers modal
     });
     await delay(1000);
   }
+
+  return await page.evaluate(() => {
+    let followersUsernamesFromWeb = Array.from(
+      document.querySelectorAll('a[class="FPmhX notranslate  _0imsa "]') // usernames list
+    );
+    const followersUsernames = [...followersUsernamesFromWeb];
+    return followersUsernames.map((follower) => follower.innerText);
+  });
 };
