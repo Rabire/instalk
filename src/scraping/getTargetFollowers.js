@@ -1,9 +1,3 @@
-function delay(time) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, time);
-  });
-}
-
 module.exports = async (page, target) => {
   await page.goto(`https://www.instagram.com/${target}`, {
     waitUntil: "networkidle0",
