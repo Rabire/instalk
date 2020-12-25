@@ -11,12 +11,18 @@ const stalk = async (botCredentials, target) => {
   });
   const page = await browser.newPage();
 
-  await login(page, botCredentials);
-  const targetFollowers = await getFollowers(page, target);
-  await console.log({
-    targetFollowers,
-    targetFollowersCount: targetFollowers.length,
-  });
+  try {
+    await login(page, botCredentials);
+
+    const targetFollowers = await getFollowers(page, target);
+    await console.log({
+      targetFollowers,
+      targetFollowersCount: targetFollowers.length,
+    });
+  } catch {
+    browser.close();
+    throw "Error during stalk()";
+  }
 
   // await page.screenshot({ path: "./src/screenshot-test.png" });
   await browser.close();
