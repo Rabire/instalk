@@ -6,7 +6,7 @@ const getFollowers = require("./scraping/getFollowers");
 const stalk = async (botCredentials, target) => {
   const browser = await puppeteer.launch({
     headless: false, // if true => hide Chromium
-    args: ["--window-size=1920,1080"],
+    args: ["--window-size=1000,800"],
     defaultViewport: null,
   });
   const page = await browser.newPage();
