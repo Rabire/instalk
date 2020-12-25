@@ -11,9 +11,7 @@ module.exports = async (page, target) => {
 
   await page.click('a[class="-nal3 "]'); // followers link
 
-  await page.waitForFunction(
-    () => document.querySelectorAll('div[class="isgrP"]').length // scrollable followers modal
-  );
+  await page.waitForSelector('div[class="isgrP"]'); // scrollable followers modal
 
   let followersUsernames = [];
   while (followersUsernames.length < targetFollowersCount) {
