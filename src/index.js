@@ -1,18 +1,21 @@
 const puppeteer = require("puppeteer");
+const moment = require("moment");
 const botCredentials = require("./data/credentials");
 const login = require("./scraping/login");
 const getFollowers = require("./scraping/getFollowers");
 const getFollowing = require("./scraping/getFollowing");
 
 const stalk = async (botCredentials, target) => {
+  const start = await new Date();
   const browser = await puppeteer.launch({
     headless: false, // if true => hide Chromium
     args: ["--window-size=1000,800"],
     defaultViewport: null,
   });
-  const page = await browser.newPage();
 
   try {
+    const page = await browser.newPage();
+
     await login(page, botCredentials);
 
     const targetFollowers = await getFollowers(page, target);
@@ -31,7 +34,8 @@ const stalk = async (botCredentials, target) => {
 
   // await page.screenshot({ path: "./src/screenshot-test.png" });
   await browser.close();
+
+  await console.log(`runtime= ${moment(start).diff(moment()) / 1000}sec`);
 };
 
-// stalk(botCredentials, "_hamzatt_");
 stalk(botCredentials, "rabire_");
