@@ -10,7 +10,7 @@ module.exports = async (page, target) => {
           .children[0].innerText
     );
 
-    await page.click('a[class="-nal3 "]'); // followers link
+    await page.click('a[href*="followers"][class="-nal3 "]'); // followers link
 
     await page.waitForSelector('div[class="isgrP"]'); // scrollable followers modal
 

@@ -2,6 +2,7 @@ const puppeteer = require("puppeteer");
 const botCredentials = require("./data/credentials");
 const login = require("./scraping/login");
 const getFollowers = require("./scraping/getFollowers");
+const getFollowing = require("./scraping/getFollowing");
 
 const stalk = async (botCredentials, target) => {
   const browser = await puppeteer.launch({
@@ -15,9 +16,13 @@ const stalk = async (botCredentials, target) => {
     await login(page, botCredentials);
 
     const targetFollowers = await getFollowers(page, target);
+    const targetFollowing = await getFollowing(page, target);
+
     await console.log({
       targetFollowers,
       targetFollowersCount: targetFollowers.length,
+      targetFollowing,
+      targetFollowingCount: targetFollowing.length,
     });
   } catch {
     browser.close();
