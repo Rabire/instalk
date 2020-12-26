@@ -6,10 +6,7 @@ const getFollowers = require("./scraping/getFollowers");
 const getFollowing = require("./scraping/getFollowing");
 // const cron = require("node-cron");
 // const express = require("express");
-<<<<<<< HEAD
-=======
 const { TargetData } = require("./models");
->>>>>>> f09aa2ee5f374665a1b1eb61df43e6057ce324d5
 
 const storeTargetDatas = async (botCredentials, target) => {
   const start = await new Date();
@@ -34,7 +31,6 @@ const storeTargetDatas = async (botCredentials, target) => {
       targetFollowingCount: targetFollowing.length,
     });
   } catch {
-    browser.close();
     throw "Error during stalk()";
   }
 
@@ -44,13 +40,13 @@ const storeTargetDatas = async (botCredentials, target) => {
   await console.log(`runtime= ${moment(start).diff(moment()) / 1000}sec`);
 };
 
-// storeTargetDatas(botCredentials, "rabire_");
+storeTargetDatas(botCredentials, "getfiit2021");
 
-TargetData.create({
-  targetId: 1,
-  followers: "[]",
-  following: "[]",
-});
+// TargetData.create({
+//   targetId: 1,
+//   followers: "[]",
+//   following: "[]",
+// });
 
 // app = express();
 
