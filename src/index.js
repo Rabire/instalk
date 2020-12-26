@@ -6,6 +6,7 @@ const getFollowers = require("./scraping/getFollowers");
 const getFollowing = require("./scraping/getFollowing");
 // const cron = require("node-cron");
 // const express = require("express");
+const { TargetData } = require("./models");
 
 const storeTargetDatas = async (botCredentials, target) => {
   const start = await new Date();
@@ -40,7 +41,13 @@ const storeTargetDatas = async (botCredentials, target) => {
   await console.log(`runtime= ${moment(start).diff(moment()) / 1000}sec`);
 };
 
-storeTargetDatas(botCredentials, "rabire_");
+// storeTargetDatas(botCredentials, "rabire_");
+
+TargetData.create({
+  targetId: 1,
+  followers: "[]",
+  following: "[]",
+});
 
 // app = express();
 
