@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  mysql-development:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: rabirelebg
+      MYSQL_DATABASE: instalk-db
+    volumes:
+      - "./mariadata:/var/lib/mysql:rw"
+    ports:
+      - "3306:3306"
