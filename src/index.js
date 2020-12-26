@@ -7,7 +7,13 @@ const getFollowing = require("./scraping/getFollowing");
 const goToProfile = require("./scraping/goToProfile");
 // const cron = require("node-cron");
 // const express = require("express");
-const { TargetData, User, InstagramCredentials, Track } = require("./models");
+const {
+  TargetData,
+  User,
+  InstagramCredentials,
+  Track,
+  Target,
+} = require("./models");
 
 const storeTargetDatas = async (botCredentials, target) => {
   const start = await new Date();
@@ -71,6 +77,14 @@ storeTargetDatas(botCredentials, "rabire_");
 // Track.create({
 //   stalkerId: 1,
 //   targetId: 1,
+// });
+
+// Target.create({
+//   instagramId: "2621480436",
+//   username: "rabire_",
+//   fullname: "Rabire",
+//   pictureUrl:
+//     "https://scontent-cdt1-1.cdninstagram.com/v/t51.2885-19/s320x320/120454079_343851196725862_4052356271230671259_n.jpg?_nc_ht=scontent-cdt1-1.cdninstagram.com&_nc_ohc=suMXCo0XzEUAX9VpBbu&tp=1&oh=c7b908f5b297f516796987a780570d04&oe=600FDAC9",
 // });
 
 // app = express();
