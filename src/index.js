@@ -7,7 +7,7 @@ const getFollowing = require("./scraping/getFollowing");
 const goToProfile = require("./scraping/goToProfile");
 // const cron = require("node-cron");
 // const express = require("express");
-const { TargetData, User, InstagramCredentials } = require("./models");
+const { TargetData, User, InstagramCredentials, Track } = require("./models");
 
 const storeTargetDatas = async (botCredentials, target) => {
   const start = await new Date();
@@ -66,6 +66,11 @@ storeTargetDatas(botCredentials, "rabire_");
 //   ownerId: 1,
 //   username: "rabireh69@gmail.com",
 //   password: "rabire",
+// });
+
+// Track.create({
+//   stalkerId: 1,
+//   targetId: 1,
 // });
 
 // app = express();
