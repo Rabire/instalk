@@ -1,9 +1,5 @@
 module.exports = async (page, target) => {
   try {
-    await page.goto(`https://www.instagram.com/${target}`, {
-      waitUntil: "networkidle0",
-    });
-
     const targetFollowersCount = await page.evaluate(() =>
       parseInt(
         document.querySelector('ul[class="k9GMp "]').children[1].children[0]

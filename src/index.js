@@ -4,6 +4,7 @@ const botCredentials = require("./data/credentials");
 const login = require("./scraping/login");
 const getFollowers = require("./scraping/getFollowers");
 const getFollowing = require("./scraping/getFollowing");
+const goToProfile = require("./scraping/goToProfile");
 // const cron = require("node-cron");
 // const express = require("express");
 const { TargetData } = require("./models");
@@ -21,6 +22,7 @@ const storeTargetDatas = async (botCredentials, target) => {
 
     await login(page, botCredentials);
 
+    await goToProfile(page, target);
     const targetFollowers = await getFollowers(page, target);
     const targetFollowing = await getFollowing(page, target);
 
