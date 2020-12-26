@@ -7,7 +7,7 @@ const getFollowing = require("./scraping/getFollowing");
 const goToProfile = require("./scraping/goToProfile");
 // const cron = require("node-cron");
 // const express = require("express");
-const { TargetData } = require("./models");
+const { TargetData, User } = require("./models");
 
 const storeTargetDatas = async (botCredentials, target) => {
   const start = await new Date();
@@ -50,12 +50,18 @@ storeTargetDatas(botCredentials, "rabire_");
 //   following: "[]",
 // });
 
-// app = express();
+// User.create({
+//   username: "superadmin",
+//   email: "superadmin@gmail.com",
+//   password: "HASH/HASH/HASH",
+//   gender: "M",
+//   penisSize: 50,
+// });
 
+// app = express();
 // // Schedule tasks to be run on the server.
 // cron.schedule("* * * * *", function () {
 //   console.log(`${moment().format("LTS")}`);
 //   storeTargetDatas(botCredentials, "rabire_");
 // });
-
 // app.listen(3000);
