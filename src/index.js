@@ -58,7 +58,9 @@ storeTargetDatas(botCredentials, "rabire_");
 //   penisSize: 50,
 // });
 
-// User.findAll().then(console.log);
+// InstagramCredentials.findOne({
+//   include: [{ model: User, as: "owner" }],
+// }).then((creds) => console.log(creds));
 
 // InstagramCredentials.create({
 //   ownerId: 1,
