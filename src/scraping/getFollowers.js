@@ -27,6 +27,10 @@ module.exports = async (page, target) => {
           return followersUsernames.map((follower) => follower.innerText);
         });
       }
+
+      await page.evaluate(() => {
+        document.querySelectorAll('button[class="wpO6b "]')[1].click(); // close followers modal button
+      });
     }
 
     return followersUsernames;

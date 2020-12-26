@@ -42,7 +42,7 @@ const storeTargetDatas = async (botCredentials, target) => {
   await console.log(`runtime= ${moment(start).diff(moment()) / 1000}sec`);
 };
 
-storeTargetDatas(botCredentials, "getfiit2021");
+storeTargetDatas(botCredentials, "rabire_");
 
 // TargetData.create({
 //   targetId: 1,
