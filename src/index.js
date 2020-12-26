@@ -58,6 +58,8 @@ storeTargetDatas(botCredentials, "rabire_");
 //   penisSize: 50,
 // });
 
+// User.findAll().then(console.log);
+
 // InstagramCredentials.create({
 //   ownerId: 1,
 //   username: "rabireh69@gmail.com",
