@@ -1,6 +1,6 @@
 import styled from "styled-components/native"
 import { Text } from "../../components"
-import { color } from "../../theme"
+import { color, typography } from "../../theme"
 
 export const PressableText = styled(Text)`
   background-color: ${color.tertiary};
@@ -9,4 +9,5 @@ export const PressableText = styled(Text)`
   width: 50%;
   text-align: center;
   font-size: 15px;
+  font-family: ${typography.primaryBold};
 `
