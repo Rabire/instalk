@@ -1,32 +1,5 @@
 const puppeteer = require("puppeteer");
-const getAndStoreTargetData = require("./scraping/getAndStoreTargetData");
-const { InstagramCredentials, Target } = require("./models");
-
-// getAndStoreTargetData (page, botCredentials, target)
-
-const getTargetsDataNightJob = async (page) => {
-  try {
-    const targets = await Target.findAll({
-      include: { model: InstagramCredentials, as: "credentialsToAccess" },
-    });
-
-    await console.log({ targetsLength: targets.length });
-
-    for (const target of targets) {
-      await getAndStoreTargetData(
-        page,
-        {
-          username: target.credentialsToAccess.username,
-          password: target.credentialsToAccess.password,
-        },
-        target
-      );
-    }
-  } catch (err) {
-    console.log(err);
-    throw "Error during getTargetsDataNightJob ";
-  }
-};
+const getTargetsDataNightJob = require("./recurrent-tasks/getTargetsDataNightJob");
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -41,5 +14,7 @@ const getTargetsDataNightJob = async (page) => {
   });
   await page.click('button[class="aOOlW  bIiDR  "]'); // accept button
 
-  getTargetsDataNightJob(page);
+  await getTargetsDataNightJob(page);
+
+  await browser.close();
 })();

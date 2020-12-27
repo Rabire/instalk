@@ -18,18 +18,18 @@ module.exports = getAndStoreTargetData = async (
     const targetFollowers = await getFollowers(page, target.username);
     const targetFollowing = await getFollowing(page, target.username);
 
-    // await console.log({
-    //   targetFollowers,
-    //   targetFollowersCount: targetFollowers.length,
-    //   targetFollowing,
-    //   targetFollowingCount: targetFollowing.length,
-    // });
-
-    await TargetData.create({
-      targetId: target.id,
-      followers: JSON.stringify(targetFollowers),
-      following: JSON.stringify(targetFollowing),
+    await console.log({
+      targetFollowers,
+      targetFollowersCount: targetFollowers.length,
+      targetFollowing,
+      targetFollowingCount: targetFollowing.length,
     });
+
+    // await TargetData.create({
+    //   targetId: target.id,
+    //   followers: JSON.stringify(targetFollowers),
+    //   following: JSON.stringify(targetFollowing),
+    // });
 
     await logout(page);
   } catch (err) {
