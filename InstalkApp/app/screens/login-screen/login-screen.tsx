@@ -1,16 +1,14 @@
 import React from "react"
-import { Screen, Text } from "../../components"
+import { Text } from "../../components"
 import { InstalkLogoBig } from "../../components/svg"
-import { RedText } from "./login-screen.styles"
-import { color } from "../../theme"
+import { Screen } from "./login-screen.styles"
 
 export const LoginScreen = () => {
   return (
-    <Screen preset="fixed" style={{ alignItems: "center", justifyContent: "space-around" }}>
+    <Screen preset="fixed">
       <InstalkLogoBig />
-      <Text text="loginScreen" />
-      <Text tx="common.next" style={{ color: color.secondary }} />
-      <RedText tx="common.next" />
+      <Text text="Login form" />
+      <Text text="Login Button" />
     </Screen>
   )
 }

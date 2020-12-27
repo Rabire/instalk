@@ -1,6 +1,7 @@
 import styled from "styled-components/native"
-import { Text } from "../../components"
+import { Screen as ScreenComponent } from "../../components"
 
-export const RedText = styled(Text)`
-  color: red;
+export const Screen = styled(ScreenComponent)`
+  align-items: center;
+  justify-content: space-around;
 `
