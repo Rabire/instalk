@@ -16,7 +16,7 @@ export const color = {
 
   line: palette.offWhite,
   text: palette.white,
-  defaultText: palette.ugly,
+  defaultText: palette.greenYellow,
   dim: palette.lightGrey,
 
   storybookDarkBg: palette.black,
