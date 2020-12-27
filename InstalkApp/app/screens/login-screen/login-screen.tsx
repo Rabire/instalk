@@ -1,5 +1,5 @@
 import React from "react"
-import { Text, Button } from "../../components"
+import { LoginForm, Button } from "../../components"
 import { InstalkLogoBig } from "../../components/svg"
 import { Screen } from "./login-screen.styles"
 
@@ -9,9 +9,9 @@ export const LoginScreen = () => {
   }
 
   return (
-    <Screen preset="fixed">
+    <Screen preset="fixed" style={{ padding: 40 }}>
       <InstalkLogoBig />
-      <Text text="Login form" />
+      <LoginForm />
       <Button tx="common.next" onPress={connect} />
     </Screen>
   )
