@@ -1,5 +1,5 @@
 import React from "react"
-import { Text } from "../../components"
+import { Text, Button } from "../../components"
 import { InstalkLogoBig } from "../../components/svg"
 import { Screen } from "./login-screen.styles"
 
@@ -8,7 +8,7 @@ export const LoginScreen = () => {
     <Screen preset="fixed">
       <InstalkLogoBig />
       <Text text="Login form" />
-      <Text text="Login Button" />
+      <Button />
     </Screen>
   )
 }
