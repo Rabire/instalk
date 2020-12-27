@@ -6,7 +6,7 @@ export const PressableText = styled(Text)`
   background-color: ${color.tertiary};
   padding: 12px;
   border-radius: 25px;
-  width: 50%;
+  width: 60%;
   text-align: center;
   font-size: 15px;
   font-family: ${typography.primaryBold};
