@@ -1,16 +1,17 @@
 import styled from "styled-components/native"
-import { Text } from "../../components"
 import { color, typography } from "../../theme"
 
 export const ComponentContainer = styled.View`
-  background-color: pink;
+  margin-vertical: 10px;
 `
 
 export const TextInput = styled.TextInput`
-  background-color: red;
   padding-horizontal: 0px;
   padding-vertical: 2px
+  margin-bottom: 2px
   color: ${color.contrast};
   border-bottom-width: 1px;
-  border-color: ${color.contrast};
+  font-size: 15px;
+  font-family: ${typography.primary};
+  border-color: ${(props) => props.fieldColor};
 `

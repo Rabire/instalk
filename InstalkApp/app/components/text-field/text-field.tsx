@@ -1,18 +1,49 @@
-import * as React from "react"
+import React, { useState } from "react"
 import { ComponentContainer, TextInput } from "./text-field.styles"
-import { Text } from "../"
 import { SmallText } from "../../enum/styles"
+import { translate } from "../../i18n"
+import { capitalizeFirstLetter } from "../../utils/format"
+import { color } from "../../theme"
 
-interface TextFieldProps {}
+interface TextFieldProps {
+  setField: Function
+  i18nPlaceholder?: string
+  isRequired?: boolean
+  isErrorDisplayed?: boolean
+  i18nSubText?: string
+}
 
 export function TextField(props: TextFieldProps) {
-  const {} = props
+  const {
+    setField,
+    i18nPlaceholder,
+    isRequired = false,
+    isErrorDisplayed = false,
+    i18nSubText,
+  } = props
+
+  const [text, setText] = useState("")
+
+  const handleTextChange = (text) => {
+    setField(text)
+    setText(text)
+  }
+
+  let label = capitalizeFirstLetter(translate(i18nPlaceholder))
+  if (isRequired) label += "*"
+
+  const fieldColor = isErrorDisplayed ? color.error : color.contrast
 
   return (
     <ComponentContainer>
-      <Text text="label" />
-      <TextInput />
-      <SmallText text="blablabnlablabalba" />
+      <SmallText text={!!text ? label : ""} style={{ textAlign: "left", marginBottom: -7 }} />
+      <TextInput
+        onChangeText={handleTextChange}
+        placeholder={label}
+        placeholderTextColor={fieldColor}
+        fieldColor={fieldColor}
+      />
+      {i18nSubText && <SmallText tx={i18nSubText} style={{ textAlign: "left" }} />}
     </ComponentContainer>
   )
 }
