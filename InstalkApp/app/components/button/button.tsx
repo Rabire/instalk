@@ -1,18 +1,23 @@
 import * as React from "react"
-import { View, ViewStyle } from "react-native"
-import { color, typography } from "../../theme"
-import { Text } from "../"
+import { ViewStyle } from "react-native"
+import { PressableText } from "./button.styles"
+import { translate } from "../../i18n"
+import { capitalizeFirstLetter } from "../../utils/format"
 
-export interface ButtonProps {
+interface ButtonProps {
+  tx: string
+  onPress: Function
   customStyle?: ViewStyle
 }
 
 export function Button(props: ButtonProps) {
-  const { customStyle } = props
+  const { customStyle, tx, onPress } = props
 
   return (
-    <View style={customStyle}>
-      <Text>Hello</Text>
-    </View>
+    <PressableText
+      text={capitalizeFirstLetter(translate(tx))}
+      onPress={onPress}
+      style={customStyle}
+    />
   )
 }

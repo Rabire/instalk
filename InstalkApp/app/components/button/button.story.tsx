@@ -8,9 +8,9 @@ storiesOf("Button", module)
   .add("Style Presets", () => (
     <Story>
       <UseCase text="Some buttons">
-        <Button />
-        <Button />
-        <Button />
+        <Button tx="common.cancel" onPress={() => null} />
+        <Button tx="common.cancel" onPress={() => null} />
+        <Button tx="common.cancel" onPress={() => null} />
       </UseCase>
     </Story>
   ))
