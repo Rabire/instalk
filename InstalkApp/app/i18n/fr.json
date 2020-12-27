@@ -1,0 +1,16 @@
+{
+  "common": {
+    "ok": "ok!",
+    "cancel": "annuler",
+    "back": "retour",
+    "next": "suivant"
+  },
+  "errors": {
+    "invalidEmail": "Invalid email address."
+  },
+  "loginScreen": {
+    "username": "identifiant",
+    "password": "mot de passe",
+    "connect": "se connecter"
+  }
+}

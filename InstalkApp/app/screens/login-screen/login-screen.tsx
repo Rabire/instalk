@@ -5,6 +5,7 @@ export const LoginScreen = () => {
   return (
     <Screen preset="scroll">
       <Text text="loginScreen" />
+      <Text tx="common.next" />
     </Screen>
   )
 }
