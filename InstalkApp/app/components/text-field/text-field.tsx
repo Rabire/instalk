@@ -1,6 +1,5 @@
 import * as React from "react"
-import { View, ViewStyle } from "react-native"
-import { color, typography } from "../../theme"
+import { View } from "react-native"
 import { Text } from "../"
 
 interface TextFieldProps {}
@@ -10,7 +9,7 @@ export function TextField(props: TextFieldProps) {
 
   return (
     <View>
-      <Text>Hello</Text>
+      <Text text="helooo" />
     </View>
   )
 }

@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ComponentBox } from "./login-form.styles"
-import { Text } from "../"
+import { TextField } from "../"
 
 interface LoginFormProps {}
 
@@ -9,8 +9,8 @@ export function LoginForm(props: LoginFormProps) {
 
   return (
     <ComponentBox>
-      <Text>Identifiant</Text>
-      <Text>Mot de passe</Text>
+      <TextField />
+      <TextField />
     </ComponentBox>
   )
 }
