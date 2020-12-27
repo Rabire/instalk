@@ -11,6 +11,9 @@
   "loginScreen": {
     "username": "identifiant",
     "password": "mot de passe",
-    "connect": "se connecter"
+    "connect": "se connecter",
+    "blurryLogo": "mdrr le logo il est flou",
+    "passwordForgotten": "Mot de passe oublié ?",
+    "tooBadForYou": "Tant pis pour toi"
   }
 }
