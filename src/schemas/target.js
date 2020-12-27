@@ -24,8 +24,9 @@ module.exports = {
     type: DataTypes.STRING,
   },
   credentialsToAccessId: {
-    allowNull: true,
-    type: DataTypes.STRING,
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    defaultValue: 1,
   },
   createdAt: {
     allowNull: false,

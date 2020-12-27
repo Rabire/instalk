@@ -19,7 +19,7 @@ module.exports = function (models) {
     foreignKey: "targetId",
   });
 
-  models.TargetData.belongsTo(models.InstagramCredentials, {
+  models.Target.belongsTo(models.InstagramCredentials, {
     as: "credentialsToAccess",
     foreignKey: "credentialsToAccessId",
   });

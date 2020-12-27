@@ -1,8 +1,5 @@
 module.exports = async (page, { username, password }) => {
-  await page.goto(`https://www.instagram.com`, {
-    waitUntil: "networkidle0",
-  });
-  await page.click('button[class="aOOlW  bIiDR  "]'); // accept button
+  await page.waitForSelector('input[name="username"]');
 
   await page.type('input[name="username"]', username);
   await page.type('input[name="password"]', password);
@@ -15,12 +12,13 @@ module.exports = async (page, { username, password }) => {
       .then(() => page.click('button[class="sqdOP yWX7d    y3zKF     "]'));
 
     /* Skip notifications */
-    await page
-      .waitForSelector('button[class="aOOlW   HoLwm "]')
-      .then(() => page.click('button[class="aOOlW   HoLwm "]'));
+    // page
+    //   .waitForSelector('button[class="aOOlW   HoLwm "]')
+    //   .then(() => page.click('button[class="aOOlW   HoLwm "]'))
+    //   .catch(() => console.log("not first login"));
 
     return true;
-  } catch {
-    throw "Login error";
+  } catch (err) {
+    throw `Login error ${err}`;
   }
 };
