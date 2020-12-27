@@ -5,6 +5,7 @@ export const color = {
 
   transparent: "rgba(0, 0, 0, 0)",
   background: palette.blackRussian,
+  contrast: palette.white,
 
   primary: palette.blackRussian,
   primaryLighter: palette.vulcan,

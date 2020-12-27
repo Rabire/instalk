@@ -10,4 +10,5 @@ export const PressableText = styled(Text)`
   text-align: center;
   font-size: 15px;
   font-family: ${typography.primaryBold};
+  color: ${color.contrast};
 `
