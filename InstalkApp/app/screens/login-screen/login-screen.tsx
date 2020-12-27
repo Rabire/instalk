@@ -5,7 +5,7 @@ import { Screen } from "./login-screen.styles"
 
 export const LoginScreen = () => {
   const connect = () => {
-    console.log("connextion")
+    console.log("connexion")
   }
 
   return (
