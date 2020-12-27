@@ -10,7 +10,7 @@ export function LoginForm(props: LoginFormProps) {
   return (
     <ComponentBox>
       <TextField />
-      <TextField />
+      {/* <TextField /> */}
     </ComponentBox>
   )
 }

@@ -1,7 +1,7 @@
 import * as React from "react"
-import {} from "react-native"
-import { ComponentContainer } from "./text-field.styles"
+import { ComponentContainer, TextInput } from "./text-field.styles"
 import { Text } from "../"
+import { SmallText } from "../../enum/styles"
 
 interface TextFieldProps {}
 
@@ -10,7 +10,9 @@ export function TextField(props: TextFieldProps) {
 
   return (
     <ComponentContainer>
-      <Text text="helooo" />
+      <Text text="label" />
+      <TextInput />
+      <SmallText text="blablabnlablabalba" />
     </ComponentContainer>
   )
 }
