@@ -45,8 +45,7 @@ export const LoginScreen = () => {
           // await saveToken(data.user.token)
           // await UserStore.setUser(data.user)
 
-          // navigation.navigate("home")
-          console.log("NAVIGATE")
+          navigation.navigate("home")
         } else if (data === "one or multiple required fields are empty") {
           setI18nError("errors.emptyFields")
         } else if (data === "unknown username or password") {

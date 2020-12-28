@@ -1,9 +1,10 @@
 import React from "react"
 import { createNativeStackNavigator } from "react-native-screens/native-stack"
-import { LoginScreen } from "../screens"
+import { LoginScreen, HomeScreen } from "../screens"
 
 export type PrimaryParamList = {
   login: undefined
+  home: undefined
 }
 
 const Stack = createNativeStackNavigator<PrimaryParamList>()
@@ -18,6 +19,7 @@ export function PrimaryNavigator() {
       }}
     >
       <Stack.Screen name="login" component={LoginScreen} />
+      <Stack.Screen name="home" component={HomeScreen} />
     </Stack.Navigator>
   )
 }
