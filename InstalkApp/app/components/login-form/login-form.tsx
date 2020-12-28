@@ -15,6 +15,7 @@ export function LoginForm(props: LoginFormProps) {
   const { setUsername, setPassword, login } = props
 
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [passwordInput, setPasswordInput] = useState(null)
 
   return (
     <>
@@ -22,11 +23,12 @@ export function LoginForm(props: LoginFormProps) {
         <TextField
           setField={setUsername}
           i18nPlaceholder="loginScreen.username"
-          onSubmitEditing={() => console.log("trigger password field")}
+          onSubmitEditing={() => {
+            passwordInput.focus()
+          }}
         />
-        {/* <TextField setField={setPassword} i18nPlaceholder="loginScreen.password" /> */}
 
-        <PasswordField setField={setPassword} onSubmitEditing={login} />
+        <PasswordField setField={setPassword} onSubmitEditing={login} setRef={setPasswordInput} />
 
         <TouchableBox onPress={() => setIsModalVisible(true)}>
           <SmallText tx="loginScreen.passwordForgotten" />

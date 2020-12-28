@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { MutableRefObject, useState } from "react"
+import { TextInput as RNTextInput } from "react-native"
 import { ComponentContainer, TextInput } from "./text-field.styles"
 import { SmallText } from "../../enum/styles"
 import { translate } from "../../i18n"
@@ -13,6 +14,8 @@ interface TextFieldProps {
   i18nSubText?: string
   onSubmitEditing?: Function
   isTextHidden?: boolean
+  setRef?: Function
+  ref?: MutableRefObject<RNTextInput>
 }
 
 export function TextField(props: TextFieldProps) {
@@ -24,6 +27,8 @@ export function TextField(props: TextFieldProps) {
     i18nSubText,
     onSubmitEditing,
     isTextHidden = false,
+    ref,
+    setRef = () => null,
   } = props
 
   const [text, setText] = useState("")
@@ -42,6 +47,7 @@ export function TextField(props: TextFieldProps) {
     <ComponentContainer>
       <SmallText text={!!text ? label : ""} style={{ textAlign: "left", marginBottom: -7 }} />
       <TextInput
+        ref={ref ? ref : (input) => setRef(input)}
         onChangeText={handleTextChange}
         placeholder={label}
         placeholderTextColor={fieldColor}

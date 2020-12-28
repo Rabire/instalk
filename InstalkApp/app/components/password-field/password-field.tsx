@@ -7,10 +7,11 @@ import { TextField } from "../"
 interface PasswordFieldProps {
   setField: Function
   onSubmitEditing?: Function
+  setRef?: Function
 }
 
 export function PasswordField(props: PasswordFieldProps) {
-  const { setField, onSubmitEditing } = props
+  const { setField, onSubmitEditing, setRef } = props
 
   const [isTextHidden, setIsTextHidden] = useState(true)
 
@@ -21,6 +22,7 @@ export function PasswordField(props: PasswordFieldProps) {
         i18nPlaceholder="loginScreen.password"
         onSubmitEditing={onSubmitEditing}
         isTextHidden={isTextHidden}
+        setRef={setRef}
       />
       <TouchableEyeBox onPress={() => setIsTextHidden(!isTextHidden)}>
         <EyeSvg isCrossed={!isTextHidden} />
