@@ -8,3 +8,8 @@ export const ComponentBox = styled.View`
 export const TouchableBox = styled.TouchableOpacity`
   padding-top: 20px;
 `
+
+export const ModalImage = styled.Image`
+  width: 100%;
+  height: 100%;
+`
