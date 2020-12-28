@@ -5,6 +5,7 @@ import { InstalkLogoBig } from "../../components/svg"
 import { Screen, ButtonBox } from "./login-screen.styles"
 import { SmallText } from "../../enum/styles"
 import { vw } from "../../utils/viewport-units"
+import { UserStore } from "../../models"
 import { Api } from "../../services/api"
 import { saveToken } from "../../utils/storage"
 import { useNavigation } from "@react-navigation/native"
@@ -40,13 +41,14 @@ export const LoginScreen = () => {
     instalkApi
       .login({ username: username?.trim().toLowerCase(), password })
       .then(async (data) => {
-        console.log({ data })
-        if (data.user) {
-          // await UserStore.clearUser()
-          await saveToken(data.user.token)
-          // await UserStore.setUser(data.user)
+        console.log(data)
+        console.log(typeof data.user.createdAt)
 
-          navigation.navigate("home")
+        if (data.user) {
+          await UserStore.clearUser()
+          await saveToken(data.user.token)
+          await UserStore.setUser(data.user)
+          await navigation.navigate("home")
         } else if (data === "one or multiple required fields are empty") {
           setI18nError("errors.emptyFields")
         } else if (data === "unknown username or password") {
