@@ -1,9 +1,12 @@
 const puppeteer = require("puppeteer");
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const moment = require("moment");
 const getTargetsDataNightJob = require("./recurrent-tasks/getTargetsDataNightJob");
 const { TargetData, Target } = require("./models");
-const moment = require("moment");
 
-async () => {
+const nightBot = async () => {
   const browser = await puppeteer.launch({
     headless: false,
     args: ["--window-size=1000,800"],
@@ -21,7 +24,21 @@ async () => {
   await browser.close();
 };
 
-(async () => {
+const apiServerRunning = (() => {
+  const app = express();
+  const port = 3000;
+
+  app.use(bodyParser.json());
+  app.use(cors());
+
+  require("./routes/users-route.js")(app);
+
+  app.listen(port, () =>
+    console.log(`Example listening at http://localhost:${port}`)
+  );
+})();
+
+const getTargetsDataAndDoSomeStats = async () => {
   const targetDatas = await TargetData.findAll({
     raw: true,
     // attributes: ["id", "targetId"],
@@ -77,9 +94,9 @@ async () => {
 
     console.log({ notFollowingBack });
   })();
-})();
+};
 
-() => {
+const createTarget = () => {
   Target.create({
     instagramId: "2110819682",
     username: "caroliineuuuh",

@@ -5,8 +5,8 @@ const { Op } = require("sequelize");
 const superUser = {
   id: 1,
   username: "superadmin",
-  email: "superadmin@gmail.com",
-  password: "aaa",
+  email: "rabireh69@gmail.com",
+  password: "rabire",
   penisSize: 50,
   createdAt: new Date(),
   updatedAt: new Date(),
@@ -15,7 +15,7 @@ const superUser = {
 const botCredentials = {
   id: 1,
   ownerId: superUser.id,
-  username: "rabireh69@gmail.com",
+  username: "reubeu.lotte",
   password: "rabire",
   createdAt: new Date(),
   updatedAt: new Date(),
