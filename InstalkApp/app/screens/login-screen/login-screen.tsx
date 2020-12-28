@@ -65,7 +65,7 @@ export const LoginScreen = () => {
       <LoginForm setUsername={setUsername} setPassword={setPassword} />
 
       <ButtonBox isKeyboardVisible={isKeyboardVisible}>
-        <Button tx="loginScreen.connect" onPress={sendCredentials} />
+        <Button isLoading={isLoading} tx="loginScreen.connect" onPress={sendCredentials} />
       </ButtonBox>
     </Screen>
   )

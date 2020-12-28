@@ -12,3 +12,9 @@ export const PressableText = styled(Text)`
   font-family: ${typography.primaryBold};
   color: ${color.contrast};
 `
+
+export const WheelBox = styled.View`
+  position: absolute;
+  height: 100%;
+  justify-content: center;
+`
