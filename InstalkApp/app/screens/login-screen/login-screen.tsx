@@ -6,6 +6,7 @@ import { Screen, ButtonBox } from "./login-screen.styles"
 import { SmallText } from "../../enum/styles"
 import { vw } from "../../utils/viewport-units"
 import { Api } from "../../services/api"
+import { saveToken } from "../../utils/storage"
 import { useNavigation } from "@react-navigation/native"
 import { color } from "../../theme"
 
@@ -42,7 +43,7 @@ export const LoginScreen = () => {
         console.log({ data })
         if (data.user) {
           // await UserStore.clearUser()
-          // await saveToken(data.user.token)
+          await saveToken(data.user.token)
           // await UserStore.setUser(data.user)
 
           navigation.navigate("home")
