@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { View } from "react-native"
+import { TouchableEyeBox } from "./password-field.styles"
+import { EyeSvg } from "./EyeSvg"
 import { TextField } from "../"
 
 interface PasswordFieldProps {
@@ -20,6 +22,9 @@ export function PasswordField(props: PasswordFieldProps) {
         onSubmitEditing={onSubmitEditing}
         isTextHidden={isTextHidden}
       />
+      <TouchableEyeBox onPress={() => setIsTextHidden(!isTextHidden)}>
+        <EyeSvg isCrossed={!isTextHidden} />
+      </TouchableEyeBox>
     </View>
   )
 }
