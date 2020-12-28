@@ -41,9 +41,6 @@ export const LoginScreen = () => {
     instalkApi
       .login({ username: username?.trim().toLowerCase(), password })
       .then(async (data) => {
-        console.log(data)
-        console.log(typeof data.user.createdAt)
-
         if (data.user) {
           await UserStore.clearUser()
           await saveToken(data.user.token)
