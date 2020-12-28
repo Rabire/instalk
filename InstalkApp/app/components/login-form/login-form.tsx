@@ -11,22 +11,13 @@ export function LoginForm(props: LoginFormProps) {
 
   const [username, setUsername] = useState(null)
   const [password, setPassword] = useState(null)
-  const [displayErrors, setDisplayErrors] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   return (
     <>
       <ComponentBox>
-        <TextField
-          setField={setUsername}
-          i18nPlaceholder="loginScreen.username"
-          isErrorDisplayed={!username && displayErrors}
-        />
-        <TextField
-          setField={setPassword}
-          i18nPlaceholder="loginScreen.password"
-          isErrorDisplayed={!password && displayErrors}
-        />
+        <TextField setField={setUsername} i18nPlaceholder="loginScreen.username" />
+        <TextField setField={setPassword} i18nPlaceholder="loginScreen.password" />
 
         <TouchableBox onPress={() => setIsModalVisible(true)}>
           <SmallText tx="loginScreen.passwordForgotten" />
