@@ -17,7 +17,7 @@ export function PasswordField(props: PasswordFieldProps) {
       <TextField
         setField={setField}
         i18nPlaceholder="loginScreen.password"
-        onSubmitEditing={() => console.log("send creds")}
+        onSubmitEditing={onSubmitEditing}
         isTextHidden={isTextHidden}
       />
     </View>
