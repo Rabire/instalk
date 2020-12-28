@@ -11,6 +11,7 @@ interface TextFieldProps {
   isRequired?: boolean
   isErrorDisplayed?: boolean
   i18nSubText?: string
+  onSubmitEditing?: Function
 }
 
 export function TextField(props: TextFieldProps) {
@@ -20,6 +21,7 @@ export function TextField(props: TextFieldProps) {
     isRequired = false,
     isErrorDisplayed = false,
     i18nSubText,
+    onSubmitEditing,
   } = props
 
   const [text, setText] = useState("")
@@ -42,6 +44,7 @@ export function TextField(props: TextFieldProps) {
         placeholder={label}
         placeholderTextColor={fieldColor}
         fieldColor={fieldColor}
+        onSubmitEditing={onSubmitEditing}
       />
       {i18nSubText && <SmallText tx={i18nSubText} style={{ textAlign: "left" }} />}
     </ComponentContainer>

@@ -66,7 +66,7 @@ export const LoginScreen = () => {
         <SmallText tx="loginScreen.blurryLogo" />
       </View>
 
-      <LoginForm setUsername={setUsername} setPassword={setPassword} />
+      <LoginForm setUsername={setUsername} setPassword={setPassword} login={sendCredentials} />
 
       {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
 

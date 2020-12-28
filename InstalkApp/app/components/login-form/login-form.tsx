@@ -7,17 +7,22 @@ import { TrollModal } from "./TrollModal"
 interface LoginFormProps {
   setUsername: Function
   setPassword: Function
+  login: Function
 }
 
 export function LoginForm(props: LoginFormProps) {
-  const { setUsername, setPassword } = props
+  const { setUsername, setPassword, sendCredentials } = props
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   return (
     <>
       <ComponentBox>
-        <TextField setField={setUsername} i18nPlaceholder="loginScreen.username" />
+        <TextField
+          setField={setUsername}
+          i18nPlaceholder="loginScreen.username"
+          onSubmitEditing={() => console.log("trigger password field")}
+        />
         <TextField setField={setPassword} i18nPlaceholder="loginScreen.password" />
 
         <TouchableBox onPress={() => setIsModalVisible(true)}>
