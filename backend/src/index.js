@@ -35,18 +35,21 @@ async () => {
     )
   );
 
-  // await console.log(targetDatas.length);
-
   await (() => {
+    console.log({ targetDatasCount: targetDatas.length });
+
     const previousFollowers = JSON.parse(targetDatas[0].followers);
     const recentFollowers = JSON.parse(targetDatas[1].followers);
 
-    const newFollowers = previousFollowers.filter(
-      (x) => !recentFollowers.includes(x)
+    console.log({ previousFollowersCount: previousFollowers.length });
+    console.log({ recentFollowersCount: recentFollowers.length });
+
+    const newFollowers = recentFollowers.filter(
+      (x) => !previousFollowers.includes(x)
     );
 
-    const missingFollowers = recentFollowers.filter(
-      (x) => !previousFollowers.includes(x)
+    const missingFollowers = previousFollowers.filter(
+      (x) => !recentFollowers.includes(x)
     );
 
     console.log({ newFollowers, missingFollowers });
