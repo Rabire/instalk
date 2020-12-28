@@ -5,9 +5,15 @@ import { InstalkLogoBig } from "../../components/svg"
 import { Screen, ButtonBox } from "./login-screen.styles"
 import { SmallText } from "../../enum/styles"
 import { vw } from "../../utils/viewport-units"
+import { Api } from "../../services/api"
+import { useNavigation } from "@react-navigation/native"
 
 export const LoginScreen = () => {
+  const [username, setUsername] = useState(null)
+  const [password, setPassword] = useState(null)
   const [isKeyboardVisible, setKeyboardVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [i18nError, setI18nError] = useState(null)
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener("keyboardDidShow", () => {
@@ -23,11 +29,31 @@ export const LoginScreen = () => {
     }
   }, [])
 
-  const connect = () => {
-    console.log("connexion")
-  }
+  const navigation = useNavigation()
+  const instalkApi = new Api()
 
-  console.log({ isKeyboardVisible })
+  const sendCredentials = () => {
+    setIsLoading(true)
+    setI18nError(null)
+    instalkApi
+      .login({ username: username?.trim().toLowerCase(), password })
+      .then(async (data) => {
+        if (data.user) {
+          // await UserStore.clearUser()
+          // await saveToken(data.user.token)
+          // await UserStore.setUser(data.user)
+
+          // navigation.navigate("home")
+          console.log("NAVIGATE")
+        } else if (data === "unknown email or password") {
+          setI18nError("errors.badCredentials")
+        } else {
+          setI18nError("errors.loginError")
+        }
+      })
+      .catch(() => setI18nError("errors.loginError"))
+      .finally(() => setIsLoading(false))
+  }
 
   return (
     <Screen preset="fixed" style={{ padding: vw(17) }}>
@@ -36,10 +62,10 @@ export const LoginScreen = () => {
         <SmallText tx="loginScreen.blurryLogo" />
       </View>
 
-      <LoginForm />
+      <LoginForm setUsername={setUsername} setPassword={setPassword} />
 
       <ButtonBox isKeyboardVisible={isKeyboardVisible}>
-        <Button tx="loginScreen.connect" onPress={connect} />
+        <Button tx="loginScreen.connect" onPress={sendCredentials} />
       </ButtonBox>
     </Screen>
   )

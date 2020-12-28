@@ -4,13 +4,14 @@ import { TextField } from "../"
 import { SmallText } from "../../enum/styles"
 import { TrollModal } from "./TrollModal"
 
-interface LoginFormProps {}
+interface LoginFormProps {
+  setUsername: Function
+  setPassword: Function
+}
 
 export function LoginForm(props: LoginFormProps) {
-  const {} = props
+  const { setUsername, setPassword } = props
 
-  const [username, setUsername] = useState(null)
-  const [password, setPassword] = useState(null)
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   return (
