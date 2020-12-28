@@ -6,7 +6,9 @@
     "next": "suivant"
   },
   "errors": {
-    "invalidEmail": "Invalid email address."
+    "loginError": "Error lors de la connexion",
+    "badCredentials": "Identifant ou mot de passe incorrect",
+    "emptyFields": "Des champs sont manquants"
   },
   "loginScreen": {
     "username": "identifiant",

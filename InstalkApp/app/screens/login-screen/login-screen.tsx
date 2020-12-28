@@ -7,6 +7,7 @@ import { SmallText } from "../../enum/styles"
 import { vw } from "../../utils/viewport-units"
 import { Api } from "../../services/api"
 import { useNavigation } from "@react-navigation/native"
+import { color } from "../../theme"
 
 export const LoginScreen = () => {
   const [username, setUsername] = useState(null)
@@ -38,6 +39,7 @@ export const LoginScreen = () => {
     instalkApi
       .login({ username: username?.trim().toLowerCase(), password })
       .then(async (data) => {
+        console.log({ data })
         if (data.user) {
           // await UserStore.clearUser()
           // await saveToken(data.user.token)
@@ -45,7 +47,9 @@ export const LoginScreen = () => {
 
           // navigation.navigate("home")
           console.log("NAVIGATE")
-        } else if (data === "unknown email or password") {
+        } else if (data === "one or multiple required fields are empty") {
+          setI18nError("errors.emptyFields")
+        } else if (data === "unknown username or password") {
           setI18nError("errors.badCredentials")
         } else {
           setI18nError("errors.loginError")
@@ -63,6 +67,8 @@ export const LoginScreen = () => {
       </View>
 
       <LoginForm setUsername={setUsername} setPassword={setPassword} />
+
+      {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
 
       <ButtonBox isKeyboardVisible={isKeyboardVisible}>
         <Button isLoading={isLoading} tx="loginScreen.connect" onPress={sendCredentials} />
