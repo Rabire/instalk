@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Button, RegistrationForm } from "../../components"
 import {
   ButtonBox,
@@ -17,32 +17,29 @@ export const CreateAccountScreen = () => {
   const [penisSize, setPenisSize] = useState(null)
   const [gender, setGender] = useState(null)
 
-  const [displayInputsError, setDisplayInputsError] = useState(false)
+  const [areFieldsMissing, setAreFieldsMissing] = useState(true)
+
+  useEffect(() => {
+    if (instalkUsername && email && password && penisSize) {
+      setAreFieldsMissing(false)
+    } else {
+      setAreFieldsMissing(true)
+    }
+  }, [instalkUsername, email, password, penisSize])
 
   const sendRegisterFrom = () => {
-    console.log("sendRegisterFrom")
-    setDisplayInputsError(true)
+    if (areFieldsMissing) return console.log("fields missing")
+    if (password !== passwordConfirmation) return console.log("password do not match")
+    if (password.length < 5) return console.log("password too short")
 
     console.log({
       instalkUsername,
       email,
       password,
-      passwordConfirmation,
       penisSize,
       gender,
     })
-
-    if (password !== passwordConfirmation) {
-      console.log("password do not match")
-      return
-    }
-
-    if (instalkUsername && email && password && penisSize) {
-      console.log("ok for sending to API")
-    } else {
-      console.log("fields missing")
-      return
-    }
+    return console.log("ok for sending to API")
   }
 
   return (
@@ -65,7 +62,7 @@ export const CreateAccountScreen = () => {
         />
 
         <ButtonBox>
-          <Button isLoading={false} tx="loginScreen.connect" onPress={sendRegisterFrom} />
+          <Button isLoading={false} tx="loginScreen.register" onPress={sendRegisterFrom} />
           <SmallText tx="loginScreen.keepSecret" style={BellowButtonTextCustomStyles} />
         </ButtonBox>
       </ScrollView>

@@ -28,6 +28,7 @@
     "blurryLogo": "mdrr le logo il est flou",
     "passwordForgotten": "Mot de passe oublié ?",
     "tooBadForYou": "Tant pis pour toi",
-    "keepSecret": "tkt ça reste entre nous ;)"
+    "keepSecret": "tkt ça reste entre nous ;)",
+    "register": "s'inscrire"
   }
 }
