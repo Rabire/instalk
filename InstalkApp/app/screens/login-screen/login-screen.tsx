@@ -71,6 +71,11 @@ export const LoginScreen = () => {
 
       <ButtonBox isKeyboardVisible={isKeyboardVisible}>
         <Button isLoading={isLoading} tx="loginScreen.connect" onPress={sendCredentials} />
+        <SmallText
+          tx="loginScreen.becomeAStalker"
+          onPress={() => navigation.navigate("createAccount")}
+          style={{ marginTop: 10 }}
+        />
       </ButtonBox>
     </Screen>
   )
