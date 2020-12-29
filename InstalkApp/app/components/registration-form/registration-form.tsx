@@ -1,8 +1,9 @@
 import * as React from "react"
-import { ComponentBox, RowBox } from "./registration-form.styles"
+import { ComponentBox, RowBox, Button } from "./registration-form.styles"
 import { TextField, PasswordField } from "../"
-import { Button } from "../button/button"
 import { color } from "../../theme"
+import { capitalizeFirstLetter } from "../../utils/format"
+import { translate } from "../../i18n"
 
 interface RegistrationFormProps {
   setInstalkUsername: Function
@@ -11,6 +12,8 @@ interface RegistrationFormProps {
   setPasswordConfirmation: Function
   setPenisSize: Function
   setGender: Function
+  gender: "MALE" | "FEMALE" | null
+  penisSize: number
 }
 
 export function RegistrationForm(props: RegistrationFormProps) {
@@ -21,31 +24,36 @@ export function RegistrationForm(props: RegistrationFormProps) {
     setPasswordConfirmation,
     setPenisSize,
     setGender,
+    gender,
+    penisSize,
   } = props
 
   return (
     <ComponentBox>
-      <TextField setField={() => null} i18nPlaceholder="loginScreen.username" />
-      <TextField setField={() => null} i18nPlaceholder="loginScreen.username" />
-      <TextField setField={() => null} i18nPlaceholder="loginScreen.username" />
+      <TextField setField={setInstalkUsername} i18nPlaceholder="user.instalkUsername" />
+      <TextField setField={setEmail} i18nPlaceholder="user.email" />
 
-      <PasswordField setField={() => null} />
-      <PasswordField setField={() => null} />
+      <PasswordField setField={setPassword} />
+      <PasswordField setField={setPasswordConfirmation} />
 
-      <TextField setField={() => null} i18nPlaceholder="loginScreen.username" />
+      <TextField setField={setPenisSize} i18nPlaceholder="user.gender.sexe" />
 
-      <RowBox>
-        <Button
-          tx="user.gender.male"
-          onPress={() => setGender("MALE")}
-          customStyle={{ backgroundColor: color.secondary, width: "48%" }}
-        />
-        <Button
-          tx="user.gender.female"
-          onPress={() => setGender("FEMALE")}
-          customStyle={{ width: "48%" }}
-        />
-      </RowBox>
+      {penisSize && (
+        <RowBox>
+          <Button
+            text={capitalizeFirstLetter(translate("user.gender.male"))}
+            onPress={() => setGender("MALE")}
+            color={color.secondary}
+            isSelected={gender === "MALE"}
+          />
+          <Button
+            text={capitalizeFirstLetter(translate("user.gender.female"))}
+            onPress={() => setGender("FEMALE")}
+            color={color.tertiary}
+            isSelected={gender === "FEMALE"}
+          />
+        </RowBox>
+      )}
     </ComponentBox>
   )
 }

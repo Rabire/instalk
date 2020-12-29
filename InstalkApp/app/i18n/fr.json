@@ -11,7 +11,10 @@
     "emptyFields": "Des champs sont manquants"
   },
   "user": {
+    "instalkUsername": "Identifiant Instalk",
+    "email": "email",
     "gender": {
+      "sexe": "sexe",
       "male": "pelo",
       "female": "meuf"
     }
@@ -23,6 +26,7 @@
     "connect": "se connecter",
     "blurryLogo": "mdrr le logo il est flou",
     "passwordForgotten": "Mot de passe oublié ?",
-    "tooBadForYou": "Tant pis pour toi"
+    "tooBadForYou": "Tant pis pour toi",
+    "keepSecret": "tkt ça reste entre nous ;)"
   }
 }

@@ -13,6 +13,34 @@ export const CreateAccountScreen = () => {
   const [penisSize, setPenisSize] = useState(null)
   const [gender, setGender] = useState(null)
 
+  const [displayInputsError, setDisplayInputsError] = useState(false)
+
+  const sendRegisterFrom = () => {
+    console.log("sendRegisterFrom")
+    setDisplayInputsError(true)
+
+    console.log({
+      instalkUsername,
+      email,
+      password,
+      passwordConfirmation,
+      penisSize,
+      gender,
+    })
+
+    if (password !== passwordConfirmation) {
+      console.log("password do not match")
+      return
+    }
+
+    if (instalkUsername && email && password && penisSize) {
+      console.log("ok for sending to API")
+    } else {
+      console.log("fields missing")
+      return
+    }
+  }
+
   return (
     <StretchedAndCenteredScreen preset="scroll">
       <View>
@@ -27,15 +55,13 @@ export const CreateAccountScreen = () => {
         setPasswordConfirmation={setPasswordConfirmation}
         setPenisSize={setPenisSize}
         setGender={setGender}
+        gender={gender}
+        penisSize={penisSize}
       />
 
       <ButtonBox>
-        <Button
-          isLoading={false}
-          tx="loginScreen.connect"
-          onPress={() => console.log("create account")}
-        />
-        <SmallText tx="loginScreen.becomeAStalker" style={{ marginTop: 10 }} />
+        <Button isLoading={false} tx="loginScreen.connect" onPress={sendRegisterFrom} />
+        <SmallText tx="loginScreen.keepSecret" style={{ marginTop: 10 }} />
       </ButtonBox>
     </StretchedAndCenteredScreen>
   )
