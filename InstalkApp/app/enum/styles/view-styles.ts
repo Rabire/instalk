@@ -5,5 +5,6 @@ import { vw } from "../../utils/viewport-units"
 export const StretchedAndCenteredScreen = styled(ScreenComponent)`
   align-items: center;
   justify-content: space-around;
-  padding: ${vw(17)}px;
+  padding-horizontal: ${vw(17)}px;
+  height: 100%;
 `

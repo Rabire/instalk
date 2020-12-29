@@ -57,7 +57,7 @@ export const LoginScreen = () => {
   }
 
   return (
-    <StretchedAndCenteredScreen preset="fixed">
+    <StretchedAndCenteredScreen preset="scroll">
       <View>
         <InstalkLogoBig />
         <SmallText tx="loginScreen.blurryLogo" />
