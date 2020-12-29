@@ -1,7 +1,6 @@
 import React, { useState } from "react"
-import { View } from "react-native"
 import { Button, RegistrationForm } from "../../components"
-import { ButtonBox } from "./create-account-screen.styles"
+import { ButtonBox, ScrollView, LogoBox } from "./create-account-screen.styles"
 import { InstalkLogoBig } from "../../components/svg"
 import { SmallText, StretchedAndCenteredScreen } from "../../enum/styles"
 
@@ -42,27 +41,29 @@ export const CreateAccountScreen = () => {
   }
 
   return (
-    <StretchedAndCenteredScreen preset="scroll">
-      <View>
-        <InstalkLogoBig />
-        <SmallText tx="loginScreen.blurryLogo" />
-      </View>
+    <StretchedAndCenteredScreen preset="fixed">
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <LogoBox>
+          <InstalkLogoBig />
+          <SmallText tx="loginScreen.blurryLogo" />
+        </LogoBox>
 
-      <RegistrationForm
-        setInstalkUsername={setInstalkUsername}
-        setEmail={setEmail}
-        setPassword={setPassword}
-        setPasswordConfirmation={setPasswordConfirmation}
-        setPenisSize={setPenisSize}
-        setGender={setGender}
-        gender={gender}
-        penisSize={penisSize}
-      />
+        <RegistrationForm
+          setInstalkUsername={setInstalkUsername}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          setPasswordConfirmation={setPasswordConfirmation}
+          setPenisSize={setPenisSize}
+          setGender={setGender}
+          gender={gender}
+          penisSize={penisSize}
+        />
 
-      <ButtonBox>
-        <Button isLoading={false} tx="loginScreen.connect" onPress={sendRegisterFrom} />
-        <SmallText tx="loginScreen.keepSecret" style={{ marginTop: 10 }} />
-      </ButtonBox>
+        <ButtonBox>
+          <Button isLoading={false} tx="loginScreen.connect" onPress={sendRegisterFrom} />
+          <SmallText tx="loginScreen.keepSecret" style={{ marginTop: 10 }} />
+        </ButtonBox>
+      </ScrollView>
     </StretchedAndCenteredScreen>
   )
 }

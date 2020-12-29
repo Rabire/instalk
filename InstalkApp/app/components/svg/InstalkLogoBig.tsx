@@ -3,7 +3,7 @@ import Svg, { Path, Image, Use, Defs, Pattern } from "react-native-svg"
 
 export const InstalkLogoBig = () => {
   return (
-    <Svg width="284" height="104" fill="none" viewBox="0 0 284 104">
+    <Svg width="100%" height="104" fill="none" viewBox="0 0 284 104">
       <Path fill="url(#pattern0)" d="M0 0H284V104H0z"></Path>
       <Path fill="url(#pattern1)" d="M0 0H284V104H0z"></Path>
       <Path fill="url(#pattern2)" d="M2.202 2.203H281.799V101.796H2.202z"></Path>
