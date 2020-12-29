@@ -10,6 +10,12 @@
     "badCredentials": "Identifant ou mot de passe incorrect",
     "emptyFields": "Des champs sont manquants"
   },
+  "user": {
+    "gender": {
+      "male": "pelo",
+      "female": "meuf"
+    }
+  },
   "loginScreen": {
     "username": "identifiant",
     "password": "mot de passe",

@@ -38,12 +38,12 @@ export function RegistrationForm(props: RegistrationFormProps) {
         <Button
           tx="user.gender.male"
           onPress={() => setGender("MALE")}
-          customStyle={{ backgroundColor: color.secondary, width: "40%" }}
+          customStyle={{ backgroundColor: color.secondary, width: "48%" }}
         />
         <Button
-          tx="user.gender.frmale"
+          tx="user.gender.female"
           onPress={() => setGender("FEMALE")}
-          customStyle={{ width: "40%" }}
+          customStyle={{ width: "48%" }}
         />
       </RowBox>
     </ComponentBox>
