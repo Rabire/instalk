@@ -1,15 +1,30 @@
 import * as React from "react"
-import { View } from "react-native"
-import { Text, TextField, PasswordField } from "../"
+import { ComponentBox, RowBox } from "./registration-form.styles"
+import { TextField, PasswordField } from "../"
+import { Button } from "../button/button"
+import { color } from "../../theme"
 
-interface RegistrationFormProps {}
+interface RegistrationFormProps {
+  setInstalkUsername: Function
+  setEmail: Function
+  setPassword: Function
+  setPasswordConfirmation: Function
+  setPenisSize: Function
+  setGender: Function
+}
 
 export function RegistrationForm(props: RegistrationFormProps) {
-  const {} = props
+  const {
+    setInstalkUsername,
+    setEmail,
+    setPassword,
+    setPasswordConfirmation,
+    setPenisSize,
+    setGender,
+  } = props
 
   return (
-    <View>
-      <Text>Hello</Text>
+    <ComponentBox>
       <TextField setField={() => null} i18nPlaceholder="loginScreen.username" />
       <TextField setField={() => null} i18nPlaceholder="loginScreen.username" />
       <TextField setField={() => null} i18nPlaceholder="loginScreen.username" />
@@ -18,6 +33,19 @@ export function RegistrationForm(props: RegistrationFormProps) {
       <PasswordField setField={() => null} />
 
       <TextField setField={() => null} i18nPlaceholder="loginScreen.username" />
-    </View>
+
+      <RowBox>
+        <Button
+          tx="user.gender.male"
+          onPress={() => setGender("MALE")}
+          customStyle={{ backgroundColor: color.secondary, width: "40%" }}
+        />
+        <Button
+          tx="user.gender.frmale"
+          onPress={() => setGender("FEMALE")}
+          customStyle={{ width: "40%" }}
+        />
+      </RowBox>
+    </ComponentBox>
   )
 }

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import { View, Keyboard } from "react-native"
 import { LoginForm, Button } from "../../components"
 import { InstalkLogoBig } from "../../components/svg"
-import { Screen, ButtonBox } from "./login-screen.styles"
-import { SmallText } from "../../enum/styles"
+import { ButtonBox } from "./login-screen.styles"
+import { SmallText, StretchedAndCenteredScreen } from "../../enum/styles"
 import { UserStore } from "../../models"
 import { Api } from "../../services/api"
 import { saveToken } from "../../utils/storage"
@@ -57,7 +57,7 @@ export const LoginScreen = () => {
   }
 
   return (
-    <Screen preset="fixed">
+    <StretchedAndCenteredScreen preset="fixed">
       <View>
         <InstalkLogoBig />
         <SmallText tx="loginScreen.blurryLogo" />
@@ -78,6 +78,6 @@ export const LoginScreen = () => {
           style={{ marginTop: 10 }}
         />
       </ButtonBox>
-    </Screen>
+    </StretchedAndCenteredScreen>
   )
 }
