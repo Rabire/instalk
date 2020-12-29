@@ -13,3 +13,8 @@ export const ScrollView = styled.ScrollView`
 export const LogoBox = styled.View`
   padding-top: ${vw(17)}px;
 `
+
+export const BellowButtonTextCustomStyles = {
+  marginTop: 10,
+  paddingBottom: vw(17),
+}

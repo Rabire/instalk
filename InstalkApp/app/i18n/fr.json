@@ -22,6 +22,7 @@
   "loginScreen": {
     "username": "identifiant",
     "password": "mot de passe",
+    "passwordConfirmation": "mot de passe à nouveau",
     "becomeAStalker": "Deviens un stalker",
     "connect": "se connecter",
     "blurryLogo": "mdrr le logo il est flou",

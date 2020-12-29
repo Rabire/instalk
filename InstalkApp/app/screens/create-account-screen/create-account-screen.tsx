@@ -1,6 +1,11 @@
 import React, { useState } from "react"
 import { Button, RegistrationForm } from "../../components"
-import { ButtonBox, ScrollView, LogoBox } from "./create-account-screen.styles"
+import {
+  ButtonBox,
+  ScrollView,
+  LogoBox,
+  BellowButtonTextCustomStyles,
+} from "./create-account-screen.styles"
 import { InstalkLogoBig } from "../../components/svg"
 import { SmallText, StretchedAndCenteredScreen } from "../../enum/styles"
 
@@ -61,7 +66,7 @@ export const CreateAccountScreen = () => {
 
         <ButtonBox>
           <Button isLoading={false} tx="loginScreen.connect" onPress={sendRegisterFrom} />
-          <SmallText tx="loginScreen.keepSecret" style={{ marginTop: 10 }} />
+          <SmallText tx="loginScreen.keepSecret" style={BellowButtonTextCustomStyles} />
         </ButtonBox>
       </ScrollView>
     </StretchedAndCenteredScreen>

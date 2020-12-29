@@ -34,7 +34,10 @@ export function RegistrationForm(props: RegistrationFormProps) {
       <TextField setField={setEmail} i18nPlaceholder="user.email" />
 
       <PasswordField setField={setPassword} />
-      <PasswordField setField={setPasswordConfirmation} />
+      <PasswordField
+        setField={setPasswordConfirmation}
+        i18nPlaceholder="loginScreen.passwordConfirmation"
+      />
 
       <TextField
         setField={setPenisSize}
