@@ -5,6 +5,7 @@ module.exports = async (page) => {
   try {
     const targets = await Target.findAll({
       include: { model: InstagramCredentials, as: "credentialsToAccess" },
+      // where: { username: "rabire_" },
     });
 
     await console.log({ targetsLength: targets.length });

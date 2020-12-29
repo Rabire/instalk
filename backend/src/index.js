@@ -46,6 +46,8 @@ const getTargetsDataAndDoSomeStats = async () => {
     where: { targetId: 1 },
   });
 
+  await console.log({ targetDatasCount: targetDatas.length });
+
   await console.log(
     targetDatas.map((targetData) =>
       moment(targetData.createdAt).format("MMMM Do YYYY, h:mm:ss a")
@@ -92,7 +94,7 @@ const getTargetsDataAndDoSomeStats = async () => {
       (x) => !recentFollowers.includes(x)
     );
 
-    console.log({ notFollowingBack });
+    // console.log({ notFollowingBack });
   })();
 };
 

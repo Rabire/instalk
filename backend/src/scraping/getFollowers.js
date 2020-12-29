@@ -26,6 +26,10 @@ module.exports = async (page, target) => {
           const followersUsernames = [...followersUsernamesFromWeb];
           return followersUsernames.map((follower) => follower.innerText);
         });
+
+        console.log(
+          `found: ${followersUsernames.length}/${targetFollowersCount}`
+        );
       }
 
       await page.evaluate(() => {
