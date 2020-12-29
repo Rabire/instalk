@@ -36,7 +36,11 @@ export function RegistrationForm(props: RegistrationFormProps) {
       <PasswordField setField={setPassword} />
       <PasswordField setField={setPasswordConfirmation} />
 
-      <TextField setField={setPenisSize} i18nPlaceholder="user.gender.sexe" />
+      <TextField
+        setField={setPenisSize}
+        i18nPlaceholder="user.gender.sexe"
+        keyboardType="number-pad"
+      />
 
       {penisSize && (
         <RowBox>

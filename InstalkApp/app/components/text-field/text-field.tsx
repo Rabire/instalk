@@ -16,6 +16,7 @@ interface TextFieldProps {
   isTextHidden?: boolean
   setRef?: Function
   ref?: MutableRefObject<RNTextInput>
+  keyboardType?: string
 }
 
 export function TextField(props: TextFieldProps) {
@@ -29,6 +30,7 @@ export function TextField(props: TextFieldProps) {
     isTextHidden = false,
     ref,
     setRef = () => null,
+    keyboardType = "default",
   } = props
 
   const [text, setText] = useState("")
@@ -54,6 +56,7 @@ export function TextField(props: TextFieldProps) {
         fieldColor={fieldColor}
         onSubmitEditing={onSubmitEditing}
         secureTextEntry={isTextHidden}
+        keyboardType={keyboardType}
       />
       {i18nSubText && <SmallText tx={i18nSubText} style={{ textAlign: "left" }} />}
     </ComponentContainer>
