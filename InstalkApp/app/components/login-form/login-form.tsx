@@ -4,15 +4,17 @@ import { PasswordField } from "../"
 import { TextField } from "../"
 import { SmallText } from "../../enum/styles"
 import { TrollModal } from "./TrollModal"
+import { color } from "../../theme"
 
 interface LoginFormProps {
   setUsername: Function
   setPassword: Function
   login: Function
+  i18nError: string
 }
 
 export function LoginForm(props: LoginFormProps) {
-  const { setUsername, setPassword, login } = props
+  const { setUsername, setPassword, login, i18nError } = props
 
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [passwordInput, setPasswordInput] = useState(null)
@@ -29,6 +31,8 @@ export function LoginForm(props: LoginFormProps) {
         />
 
         <PasswordField setField={setPassword} onSubmitEditing={login} setRef={setPasswordInput} />
+
+        {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
 
         <TouchableBox onPress={() => setIsModalVisible(true)}>
           <SmallText tx="loginScreen.passwordForgotten" />

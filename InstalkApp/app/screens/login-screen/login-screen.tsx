@@ -4,12 +4,10 @@ import { LoginForm, Button } from "../../components"
 import { InstalkLogoBig } from "../../components/svg"
 import { Screen, ButtonBox } from "./login-screen.styles"
 import { SmallText } from "../../enum/styles"
-import { vw } from "../../utils/viewport-units"
 import { UserStore } from "../../models"
 import { Api } from "../../services/api"
 import { saveToken } from "../../utils/storage"
 import { useNavigation } from "@react-navigation/native"
-import { color } from "../../theme"
 
 export const LoginScreen = () => {
   const [username, setUsername] = useState(null)
@@ -59,15 +57,18 @@ export const LoginScreen = () => {
   }
 
   return (
-    <Screen preset="fixed" style={{ padding: vw(17) }}>
+    <Screen preset="fixed">
       <View>
         <InstalkLogoBig />
         <SmallText tx="loginScreen.blurryLogo" />
       </View>
 
-      <LoginForm setUsername={setUsername} setPassword={setPassword} login={sendCredentials} />
-
-      {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
+      <LoginForm
+        setUsername={setUsername}
+        setPassword={setPassword}
+        login={sendCredentials}
+        i18nError={i18nError}
+      />
 
       <ButtonBox isKeyboardVisible={isKeyboardVisible}>
         <Button isLoading={isLoading} tx="loginScreen.connect" onPress={sendCredentials} />
