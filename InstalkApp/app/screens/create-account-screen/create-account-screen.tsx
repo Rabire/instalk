@@ -62,7 +62,12 @@ export const CreateAccountScreen = () => {
         />
 
         <ButtonBox>
-          <Button isLoading={false} tx="loginScreen.register" onPress={sendRegisterFrom} />
+          <Button
+            isLoading={false}
+            isNextArrowVisible={instalkUsername && email && password && penisSize}
+            tx="loginScreen.register"
+            onPress={sendRegisterFrom}
+          />
           <SmallText tx="loginScreen.keepSecret" style={BellowButtonTextCustomStyles} />
         </ButtonBox>
       </ScrollView>
