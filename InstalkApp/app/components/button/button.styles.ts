@@ -15,6 +15,6 @@ export const PressableText = styled(Text)`
 
 export const WheelBox = styled.View`
   position: absolute;
-  height: 100%;
+  height: 49px;
   justify-content: center;
 `
