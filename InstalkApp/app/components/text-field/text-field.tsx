@@ -1,6 +1,6 @@
 import React, { MutableRefObject, useState } from "react"
 import { TextInput as RNTextInput } from "react-native"
-import { ComponentContainer, TextInput } from "./text-field.styles"
+import { ComponentContainer, TextInput, SizeText } from "./text-field.styles"
 import { SmallText } from "../../enum/styles"
 import { translate } from "../../i18n"
 import { capitalizeFirstLetter } from "../../utils/format"
@@ -17,6 +17,7 @@ interface TextFieldProps {
   setRef?: Function
   ref?: MutableRefObject<RNTextInput>
   keyboardType?: string
+  isSizeField?: boolean
 }
 
 export function TextField(props: TextFieldProps) {
@@ -31,13 +32,14 @@ export function TextField(props: TextFieldProps) {
     ref,
     setRef = () => null,
     keyboardType = "default",
+    isSizeField = false,
   } = props
 
   const [text, setText] = useState("")
 
-  const handleTextChange = (text) => {
-    setField(text)
-    setText(text)
+  const handleTextChange = (txt) => {
+    setField(txt)
+    setText(txt)
   }
 
   let label = capitalizeFirstLetter(translate(i18nPlaceholder))
@@ -58,6 +60,8 @@ export function TextField(props: TextFieldProps) {
         secureTextEntry={isTextHidden}
         keyboardType={keyboardType}
       />
+      {isSizeField && !!text && <SizeText text="cm" leftSpace={text.length * 11} />}
+
       {i18nSubText && <SmallText tx={i18nSubText} style={{ textAlign: "left" }} />}
     </ComponentContainer>
   )

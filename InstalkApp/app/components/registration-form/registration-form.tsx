@@ -40,9 +40,10 @@ export function RegistrationForm(props: RegistrationFormProps) {
         setField={setPenisSize}
         i18nPlaceholder="user.gender.sexe"
         keyboardType="number-pad"
+        isSizeField
       />
 
-      {penisSize && (
+      {!!penisSize && (
         <RowBox>
           <Button
             text={capitalizeFirstLetter(translate("user.gender.male"))}
