@@ -7,7 +7,7 @@ export const HomeScreen = () => {
   return (
     <Screen preset="fixed">
       <InstalkLogoMeduim />
-      <NavBar />
+      <NavBar activeScreen="home" />
     </Screen>
   )
 }

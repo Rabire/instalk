@@ -1,23 +1,25 @@
 import * as React from "react"
-import { View } from "react-native"
-import { Text } from "../"
+import { Linking } from "react-native"
 import { ComponentBox, ButtonBox } from "./nav-bar.styles"
+import { InstagramNavbarSvg, HomeNavbarSvg, ProfileNavbarSvg } from "../../components/svg"
 
-interface NavBarProps {}
+interface NavBarProps {
+  activeScreen: "home" | "profile"
+}
 
 export function NavBar(props: NavBarProps) {
-  const {} = props
+  const { activeScreen } = props
 
   return (
     <ComponentBox>
-      <ButtonBox>
-        <Text>IG SVG</Text>
+      <ButtonBox onPress={() => Linking.openURL("instagram://user?username=aroufgangsta91o")}>
+        <InstagramNavbarSvg />
       </ButtonBox>
       <ButtonBox>
-        <Text>HOME SVG</Text>
+        <HomeNavbarSvg />
       </ButtonBox>
       <ButtonBox>
-        <Text>PROFILE</Text>
+        <ProfileNavbarSvg />
       </ButtonBox>
     </ComponentBox>
   )
