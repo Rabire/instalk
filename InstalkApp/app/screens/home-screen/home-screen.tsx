@@ -1,22 +1,19 @@
 import React from "react"
-import { Screen, Text, NavBar } from "../../components"
+import { Screen, HomeItem, NavBar } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
-import { LogoBox, ButtonsBox } from "./home-screen.styles"
+import { NavBarPlaceholder } from "./home-screen.styles"
 
 export const HomeScreen = () => {
   return (
-    <Screen preset="fixed" style={{ alignItems: "center" }}>
-      <LogoBox>
-        <InstalkLogoMeduim />
-      </LogoBox>
+    <Screen preset="fixed" style={{ alignItems: "center", justifyContent: "space-around" }}>
+      <InstalkLogoMeduim />
 
-      <ButtonsBox>
-        <Text text="lkjsfdhf" />
-        <Text text="lkjsfdhf" />
-        <Text text="lkjsfdhf" />
-        <Text text="lkjsfdhf" />
-      </ButtonsBox>
+      <HomeItem />
+      <HomeItem />
+      <HomeItem />
+      <HomeItem />
 
+      <NavBarPlaceholder />
       <NavBar activeScreen="home" />
     </Screen>
   )

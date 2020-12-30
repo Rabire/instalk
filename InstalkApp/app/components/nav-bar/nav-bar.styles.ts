@@ -5,11 +5,11 @@ export const ComponentBox = styled.View`
   width: 100%;
   height: 65px;
   flex-direction: row;
-  justify-content: space-between;
   border-top-width: 2px;
   border-color: ${color.contrast};
-  position: absolute
-  bottom: 0
+  position: absolute;
+  flex: 1;
+  bottom: 0;
 `
 
 export const ButtonBox = styled.TouchableOpacity`
