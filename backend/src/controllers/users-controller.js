@@ -1,5 +1,6 @@
 const { User } = require("../models");
 const hash = require("../utils/hash.js");
+const getTokenData = require("../utils/token");
 const jwt = require("jsonwebtoken");
 const { Op } = require("sequelize");
 
@@ -30,20 +31,13 @@ exports.login = async (req, res) => {
         if (passwordIsCorrect) {
           const userId = user.id;
 
-          const date = new Date();
-          const expirationDate = date.setDate(date.getDate() + 1);
-          const userToken = jwt.sign({ userId: user.id }, "crypt");
-
-          const newTokenData = {
-            token: userToken,
-            tokenExpiration: expirationDate,
-          };
+          const newTokenData = getTokenData(user.id);
 
           await User.update(newTokenData, {
             where: { id: userId },
           });
 
-          const userData = { ...user.dataValues, token: userToken };
+          const userData = { ...user.dataValues, token: newTokenData.token };
 
           return res.status(200).send({ user: userData });
         } else return res.status(401).send("unknown email or password");
@@ -81,15 +75,7 @@ exports.create = async (req, res) => {
   try {
     const userCreated = await User.create(userToCreate);
 
-    // TODO: token stuff
-    const date = new Date();
-    const expirationDate = date.setDate(date.getDate() + 1);
-    const userToken = jwt.sign({ userId: userCreated.id }, "crypt");
-
-    const updateToken = {
-      token: userToken,
-      tokenExpiration: expirationDate,
-    };
+    const updateToken = getTokenData(userCreated.id);
 
     await User.update(updateToken, {
       where: { id: userCreated.id },
