@@ -16,10 +16,10 @@ export function NavBar(props: NavBarProps) {
         <InstagramNavbarSvg />
       </ButtonBox>
       <ButtonBox>
-        <HomeNavbarSvg />
+        <HomeNavbarSvg isActive={activeScreen === "home"} />
       </ButtonBox>
       <ButtonBox>
-        <ProfileNavbarSvg />
+        <ProfileNavbarSvg isActive={activeScreen === "profile"} />
       </ButtonBox>
     </ComponentBox>
   )
