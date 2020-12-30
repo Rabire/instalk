@@ -1,19 +1,23 @@
-import * as React from "react"
+import { t } from "i18n-js"
+import React from "react"
+import { capitalizeFirstLetter } from "../../utils/format"
 import { ComponentBox, InnerText, InnerHalfBox } from "./home-item.styles"
 
-interface HomeItemProps {}
+interface HomeItemProps {
+  InnerSvg: any
+  i18nInnerText: string
+}
 
 export function HomeItem(props: HomeItemProps) {
-  const {} = props
+  const { InnerSvg, i18nInnerText } = props
 
   return (
     <ComponentBox>
       <InnerHalfBox>
-        <InnerText>Utilisateurs trackés</InnerText>
+        <InnerText text={capitalizeFirstLetter(t(i18nInnerText))} />
       </InnerHalfBox>
-      <InnerHalfBox>
-        <InnerText>SVG</InnerText>
-      </InnerHalfBox>
+
+      <InnerHalfBox>{InnerSvg}</InnerHalfBox>
     </ComponentBox>
   )
 }
