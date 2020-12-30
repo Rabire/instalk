@@ -2,6 +2,7 @@ import * as React from "react"
 import { Linking } from "react-native"
 import { ComponentBox, ButtonBox } from "./nav-bar.styles"
 import { InstagramNavbarSvg, HomeNavbarSvg, ProfileNavbarSvg } from "../../components/svg"
+import { useNavigation } from "@react-navigation/native"
 
 interface NavBarProps {
   activeScreen: "home" | "profile"
@@ -10,15 +11,21 @@ interface NavBarProps {
 export function NavBar(props: NavBarProps) {
   const { activeScreen } = props
 
+  const navigation = useNavigation()
+
+  const openInstagram = () => Linking.openURL("instagram://user?username=aroufgangsta91o")
+  const goToHome = () => console.log('navigation.navigate("home")')
+  const goToProfile = () => console.log('navigation.navigate("profile")')
+
   return (
     <ComponentBox>
-      <ButtonBox onPress={() => Linking.openURL("instagram://user?username=aroufgangsta91o")}>
+      <ButtonBox onPress={openInstagram}>
         <InstagramNavbarSvg />
       </ButtonBox>
-      <ButtonBox>
+      <ButtonBox onPress={goToHome}>
         <HomeNavbarSvg isActive={activeScreen === "home"} />
       </ButtonBox>
-      <ButtonBox>
+      <ButtonBox onPress={goToProfile}>
         <ProfileNavbarSvg isActive={activeScreen === "profile"} />
       </ButtonBox>
     </ComponentBox>
