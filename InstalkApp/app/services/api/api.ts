@@ -44,4 +44,16 @@ export class Api {
 
     return response.data
   }
+
+  async createAccount({ username, email, password, penisSize, gender }): Promise<any> {
+    const response: ApiResponse<any> = await this.apisauce.post(`/user/`, {
+      username,
+      email,
+      password,
+      penisSize,
+      gender,
+    })
+
+    return response.data
+  }
 }

@@ -5,7 +5,7 @@ import { color, typography } from "../../theme"
 export const ComponentBox = styled.View`
   width: 100%;
   padding-top: 50px;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 `
 
 export const Button = styled(Text)`

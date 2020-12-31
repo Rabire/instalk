@@ -7,8 +7,11 @@
   },
   "errors": {
     "loginError": "Error lors de la connexion",
+    "userCreationError": "Error lors de la creation du commpte",
     "badCredentials": "Identifant ou mot de passe incorrect",
-    "emptyFields": "Des champs sont manquants"
+    "emptyFields": "Des champs sont manquants",
+    "shortPassword": "Le mot de passe est trop court",
+    "passwordsNotMatching": "Les mots de passe ne correspondent pas"
   },
   "user": {
     "instalkUsername": "Identifiant Instalk",
