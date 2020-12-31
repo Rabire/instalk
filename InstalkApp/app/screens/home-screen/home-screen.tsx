@@ -9,9 +9,22 @@ export const HomeScreen = () => {
     <Screen preset="fixed" style={ScreenStyles}>
       <InstalkLogoMeduim />
 
-      <HomeItem i18nInnerText="common.next" InnerSvg={<HomeTrackSvg />} />
-      <HomeItem i18nInnerText="common.next" InnerSvg={<HomeCompareSvg />} />
-      <HomeItem i18nInnerText="common.next" InnerSvg={<HomeInteractionsSvg />} />
+      <HomeItem
+        i18nInnerText="common.next"
+        InnerSvg={<HomeTrackSvg />}
+        onPress={() => console.log("Utilisateurs trackés")}
+      />
+      <HomeItem
+        i18nInnerText="common.next"
+        InnerSvg={<HomeCompareSvg />}
+        onPress={() => console.log("Comparer des utilisateurs")}
+        type="secondary"
+      />
+      <HomeItem
+        i18nInnerText="common.next"
+        InnerSvg={<HomeInteractionsSvg />}
+        onPress={() => console.log("Interactions")}
+      />
 
       <NavBarPlaceholder />
       <NavBar activeScreen="home" />

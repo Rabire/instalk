@@ -3,9 +3,9 @@ import { color, typography } from "../../theme"
 import { vw } from "../../utils/viewport-units"
 import { Text } from "../"
 
-export const ComponentBox = styled.View`
+export const ComponentBox = styled.TouchableOpacity`
   width: ${vw(100) - vw(10) * 2}px;
-  background-color: green;
+  background-color: ${(props) => (props.isPrimaryType ? color.secondary : color.tertiary)};
   height: 100px;
   padding-horizontal: 20px;
   border-radius: 30px;
@@ -17,14 +17,12 @@ export const ComponentBox = styled.View`
 
 export const InnerText = styled(Text)`
   color: ${color.contrast};
-  font-family: ${typography.primary};
+  font-family: ${typography.primaryBold};
   font-size: 18px;
-  background-color: blue;
   text-align: center;
 `
 
 export const InnerHalfBox = styled.View`
-  background-color: gold;
   align-items: center;
   width: 50%;
 `
