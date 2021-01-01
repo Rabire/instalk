@@ -1,7 +1,7 @@
 import * as React from "react"
-import { View, ViewStyle } from "react-native"
-import { Text } from "../"
-import { ComponentBox } from "./add-target.styles"
+import { ViewStyle } from "react-native"
+import { AddSvg } from "../svg"
+import { ComponentBox, InnerText } from "./add-target.styles"
 
 export interface AddTargetProps {
   style?: ViewStyle
@@ -12,9 +12,8 @@ export function AddTarget(props: AddTargetProps) {
 
   return (
     <ComponentBox>
-      {/*  SVG */}
-      <Text>Hello</Text>
-      <Text>Hello</Text>
+      <AddSvg />
+      <InnerText tx="tracksScreen.addTarget" />
     </ComponentBox>
   )
 }

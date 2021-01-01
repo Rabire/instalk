@@ -8,3 +8,5 @@ export * from "./ProfileNavbarSvg"
 export * from "./HomeTrackSvg"
 export * from "./HomeCompareSvg"
 export * from "./HomeInteractionsSvg"
+
+export * from "./AddSvg"

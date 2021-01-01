@@ -35,7 +35,8 @@
     "register": "s'inscrire"
   },
   "tracksScreen": {
-    "sectionName": "utilisateurs trackés"
+    "sectionName": "utilisateurs trackés",
+    "addTarget": "Ajouter une personne a stalk"
   },
   "compareScreen": {
     "sectionName": "comparer les utilisateurs"
