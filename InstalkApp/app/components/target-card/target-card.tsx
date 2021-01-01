@@ -1,24 +1,28 @@
 import * as React from "react"
-import { View, ViewStyle } from "react-native"
-import { ComponentBox } from "./target-card.styles"
+import { View } from "react-native"
+import { ComponentBox, PrimaryText, SecondaryText } from "./target-card.styles"
 import { Text } from "../"
+import moment from "moment"
 
-export interface TargetCardProps {
-  style?: ViewStyle
+interface TargetCardProps {
+  track: object
 }
 
 export function TargetCard(props: TargetCardProps) {
-  const {} = props
+  const { track } = props
+
+  const diffInDays = moment().diff(track.createdAt, "days")
+  const dateLabel = `tracké(e) depuis ${diffInDays} jours`
 
   return (
     <ComponentBox>
       <View>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
+        <PrimaryText text={track.target.fullname} />
+        <SecondaryText text={track.target.username} />
+        <SecondaryText text={dateLabel} />
       </View>
 
-      <Text>IMG</Text>
+      <Text text="IMG" />
     </ComponentBox>
   )
 }
