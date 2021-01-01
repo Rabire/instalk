@@ -33,5 +33,14 @@
     "tooBadForYou": "Tant pis pour toi",
     "keepSecret": "tkt ça reste entre nous ;)",
     "register": "s'inscrire"
+  },
+  "tracksScreen": {
+    "sectionName": "utilisateurs trackés"
+  },
+  "compareScreen": {
+    "sectionName": "comparer les utilisateurs"
+  },
+  "interactionScreen": {
+    "sectionName": "interactions"
   }
 }

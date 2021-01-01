@@ -10,18 +10,18 @@ export const HomeScreen = () => {
       <InstalkLogoMeduim />
 
       <HomeItem
-        i18nInnerText="common.next"
+        i18nInnerText="tracksScreen.sectionName"
         InnerSvg={<HomeTrackSvg />}
         onPress={() => console.log("Utilisateurs trackés")}
       />
       <HomeItem
-        i18nInnerText="common.next"
+        i18nInnerText="compareScreen.sectionName"
         InnerSvg={<HomeCompareSvg />}
         onPress={() => console.log("Comparer des utilisateurs")}
         type="secondary"
       />
       <HomeItem
-        i18nInnerText="common.next"
+        i18nInnerText="interactionScreen.sectionName"
         InnerSvg={<HomeInteractionsSvg />}
         onPress={() => console.log("Interactions")}
       />
