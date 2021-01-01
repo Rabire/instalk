@@ -1,4 +1,4 @@
-const { User, Target } = require("../models");
+const { User, Target, Track } = require("../models");
 const { tryGetUserFromToken } = require("../utils/user.js");
 const axios = require("axios");
 
@@ -21,9 +21,6 @@ exports.create = async (req, res) => {
   const targetInstagramUsername = bodyReceived.targetInstagramUsername;
 
   try {
-    // if not aready tracked
-    //      create track
-
     // if target already in target list
     //      return ok
     // else create target
@@ -46,9 +43,61 @@ exports.create = async (req, res) => {
       credentialsToAccessId: "",
     };
 
+    let createdTarget;
+    if (targetExists) {
+    } else {
+      await Target.create(targetToCreate);
+    }
+
+    // if not aready tracked
+    const isAlreadyTrackedByStalker = await !!Track.findOne({
+      where: {
+        [Op.and]: [
+          { targetId: createdTarget.id },
+          { stalkerId: bodyReceived.username },
+        ],
+      },
+    });
+
+    // create track
+    if (isAlreadyTrackedByStalker) {
+      return res.status(401).send("you aready track this target");
+    } else {
+      const trackToCreate = {
+        targetId: createdTarget.id,
+        stalkerId: currentUser.id,
+      };
+
+      await Track.create(trackToCreate);
+      return await res.status(200);
+    }
+
     return await res.status(200).send("targetData");
   } catch (err) {
     console.log(err);
     return res.sendStatus(500);
   }
 };
+
+/*
+Token check
+  => const stalker
+
+Body check
+  => const targetUsername
+
+axios getTargetInstagramData
+  => const targetInstagramData
+
+const targetInDb
+
+!targetInDb ? canAccessToTargetProfil ? Target.create() : 400
+  => const target
+
+const isAlreadyTrackedByStalker
+
+isAlreadyTrackedByStalker ? 400 : Track.create
+
+=> 200
+
+*/
