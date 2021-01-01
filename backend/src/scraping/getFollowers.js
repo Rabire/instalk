@@ -2,8 +2,9 @@ module.exports = async (page, target) => {
   try {
     const targetFollowersCount = await page.evaluate(() =>
       parseInt(
-        document.querySelector('ul[class="k9GMp "]').children[1].children[0]
-          .children[0].innerText
+        document
+          .querySelector('ul[class="k9GMp "]')
+          .children[1].children[0].children[0].innerText.replace(/\s+/g, "")
       )
     );
 
