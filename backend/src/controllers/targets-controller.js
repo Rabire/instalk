@@ -1,16 +1,49 @@
 const { User, Target } = require("../models");
-const { Op } = require("sequelize");
+const { tryGetUserFromToken } = require("../utils/user.js");
+const axios = require("axios");
 
 exports.create = async (req, res) => {
-  // Token verrif
+  const bodyReceived = req.body;
 
+  // Token verrif
   // get stalker id
+  let currentUser;
+  try {
+    currentUser = await tryGetUserFromToken(req, res);
+  } catch {
+    return res.status(401).send("invalid token");
+  }
 
   // get IG username of the target
-  // api get this user
-  // verrif if isPrivate => dostuff is true
+  if (!bodyReceived.targetInstagramUsername)
+    return res.status(401).send("target missing");
 
-  // else create target
+  const targetInstagramUsername = bodyReceived.targetInstagramUsername;
 
-  return res.status(200).send("bv bg");
+  try {
+    // api get this user
+    const target = await axios
+      .get(`https://www.instagram.com/rabire_/?__a=1`)
+      .then((response) => console.log(response));
+
+    // verrif if isPrivate => dostuff is true
+    if (target?.isPrivate) {
+      return res.status(402).send("traget profile is private");
+    }
+
+    // else create target
+
+    const targetToCreate = {
+      instagramId: target.id,
+      username: target.username,
+      fullname: target.full_name,
+      pictureUrl: target.profile_pic_url_hd,
+      credentialsToAccessId: "",
+    };
+
+    return await res.status(200).send("targetData");
+  } catch (err) {
+    console.log(err);
+    return res.sendStatus(500);
+  }
 };
