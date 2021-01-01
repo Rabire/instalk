@@ -1,9 +1,8 @@
 import React from "react"
 import {} from "react-native"
-import { Screen, Text, NavBar, AddTarget } from "../../components"
+import { Screen, Text, NavBar, AddTarget, TargetCard } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
 import { NavBarPlaceholder, ScrollView, InnerScrollViewBox } from "./tracks-screen.styles"
-import { vw } from "../../utils/viewport-units"
 
 export const TracksScreen = () => {
   return (
@@ -14,6 +13,10 @@ export const TracksScreen = () => {
 
           <AddTarget />
 
+          <TargetCard />
+          <TargetCard />
+          <TargetCard />
+          <TargetCard />
           <Text text="zbi" />
           <Text text="zbi" />
           <Text text="zbi" />

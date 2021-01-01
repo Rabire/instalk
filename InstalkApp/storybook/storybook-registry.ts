@@ -1,3 +1,4 @@
+require("../app/components/target-card/target-card.story")
 require("../app/components/add-target/add-target.story")
 require("../app/components/home-item/home-item.story")
 require("../app/components/nav-bar/nav-bar.story")
