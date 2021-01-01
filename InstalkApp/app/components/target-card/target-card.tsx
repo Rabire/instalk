@@ -2,10 +2,11 @@ import * as React from "react"
 import { View } from "react-native"
 import { ComponentBox, PrimaryText, SecondaryText } from "./target-card.styles"
 import { Text } from "../"
+import { TrackObject } from "../../utils/types"
 import moment from "moment"
 
 interface TargetCardProps {
-  track: object
+  track: TrackObject
 }
 
 export function TargetCard(props: TargetCardProps) {
