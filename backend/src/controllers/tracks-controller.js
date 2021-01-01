@@ -21,6 +21,13 @@ exports.create = async (req, res) => {
   const targetInstagramUsername = bodyReceived.targetInstagramUsername;
 
   try {
+    // if not aready tracked
+    //      create track
+
+    // if target already in target list
+    //      return ok
+    // else create target
+
     // api get this user
     const target = await axios
       .get(`https://www.instagram.com/rabire_/?__a=1`)
@@ -30,8 +37,6 @@ exports.create = async (req, res) => {
     if (target?.isPrivate) {
       return res.status(402).send("traget profile is private");
     }
-
-    // else create target
 
     const targetToCreate = {
       instagramId: target.id,
