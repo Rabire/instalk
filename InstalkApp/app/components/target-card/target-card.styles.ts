@@ -2,7 +2,7 @@ import styled from "styled-components/native"
 import { Text } from "../../components"
 import { color, typography } from "../../theme"
 
-export const ComponentBox = styled.View`
+export const ComponentBox = styled.TouchableOpacity`
   background-color: ${color.secondary};
   margin-vertical: 15px;
   flex-direction: row;

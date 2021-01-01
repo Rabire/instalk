@@ -16,7 +16,7 @@ export function TargetCard(props: TargetCardProps) {
   const dateLabel = `tracké(e) depuis ${diffInDays} jours`
 
   return (
-    <ComponentBox>
+    <ComponentBox onPress={() => console.log(`go to taret activity ${track.target.id}`)}>
       <View>
         <PrimaryText text={track.target.fullname} />
         <SecondaryText text={track.target.username} />
