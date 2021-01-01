@@ -1,6 +1,6 @@
 import React from "react"
 import {} from "react-native"
-import { Screen, Text, NavBar } from "../../components"
+import { Screen, Text, NavBar, AddTarget } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
 import { NavBarPlaceholder, ScrollView, InnerScrollViewBox } from "./tracks-screen.styles"
 import { vw } from "../../utils/viewport-units"
@@ -10,7 +10,9 @@ export const TracksScreen = () => {
     <Screen preset="fixed">
       <ScrollView>
         <InnerScrollViewBox>
-          <InstalkLogoMeduim customStyles={{ marginBottom: vw(17) }} />
+          <InstalkLogoMeduim />
+
+          <AddTarget />
 
           <Text text="zbi" />
           <Text text="zbi" />

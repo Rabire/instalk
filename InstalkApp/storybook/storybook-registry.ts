@@ -1,3 +1,4 @@
+require("../app/components/add-target/add-target.story")
 require("../app/components/home-item/home-item.story")
 require("../app/components/nav-bar/nav-bar.story")
 require("../app/components/registration-form/registration-form.story")
