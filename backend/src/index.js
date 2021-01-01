@@ -32,6 +32,7 @@ const apiServerRunning = (() => {
   app.use(cors());
 
   require("./routes/users-route.js")(app);
+  require("./routes/targets-route.js")(app);
 
   app.listen(port, () =>
     console.log(`Example listening at http://localhost:${port}`)
