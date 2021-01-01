@@ -3,8 +3,11 @@ import { Screen, HomeItem, NavBar } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
 import { NavBarPlaceholder, ScreenStyles } from "./home-screen.styles"
 import { HomeTrackSvg, HomeCompareSvg, HomeInteractionsSvg } from "../../components/svg"
+import { useNavigation } from "@react-navigation/native"
 
 export const HomeScreen = () => {
+  const navigation = useNavigation()
+
   return (
     <Screen preset="fixed" style={ScreenStyles}>
       <InstalkLogoMeduim />
@@ -12,7 +15,7 @@ export const HomeScreen = () => {
       <HomeItem
         i18nInnerText="tracksScreen.sectionName"
         InnerSvg={<HomeTrackSvg />}
-        onPress={() => console.log("Utilisateurs trackés")}
+        onPress={() => navigation.navigate("tracks")}
       />
       <HomeItem
         i18nInnerText="compareScreen.sectionName"
