@@ -1,7 +1,7 @@
 import * as React from "react"
 import { View } from "react-native"
 import { ComponentBox, PrimaryText, SecondaryText } from "./target-card.styles"
-import { Text } from "../"
+import { PhotoBubble } from "../"
 import { TrackObject } from "../../utils/types"
 import moment from "moment"
 
@@ -23,7 +23,7 @@ export function TargetCard(props: TargetCardProps) {
         <SecondaryText text={dateLabel} />
       </View>
 
-      <Text text="IMG" />
+      <PhotoBubble source={track.target.pictureUrl} />
     </ComponentBox>
   )
 }
