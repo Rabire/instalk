@@ -1,16 +1,16 @@
 import * as storage from "./storage"
 
-const sfqToken = "SFQ_TOKEN"
+const instalkToken = "INSTALK_TOKEN"
 
 export async function saveToken(token: string) {
-  await storage.save(sfqToken, token)
+  await storage.save(instalkToken, token)
   console.log(`token ${token} saved`)
 }
 
 export async function loadToken() {
-  return await storage.load(sfqToken)
+  return await storage.load(instalkToken)
 }
 
 export async function clearToken() {
-  await storage.remove(sfqToken)
+  await storage.remove(instalkToken)
 }

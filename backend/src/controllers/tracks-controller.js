@@ -103,8 +103,6 @@ isAlreadyTrackedByStalker ? 400 : Track.create
 */
 
 exports.getAllMine = async (req, res) => {
-  const bodyReceived = req.body;
-
   let stalker;
   try {
     stalker = await tryGetUserFromToken(req, res);
@@ -113,8 +111,6 @@ exports.getAllMine = async (req, res) => {
   }
 
   try {
-    // get stalker tracks
-
     const stalkerTargets = await Track.findAll({
       include: [
         { model: User, as: "stalker" },
@@ -125,7 +121,7 @@ exports.getAllMine = async (req, res) => {
       },
     });
 
-    return res.status(200).send(stalkerTargets);
+    return res.status(200).send({ targets: stalkerTargets });
   } catch (err) {
     console.log(err);
     return res.sendStatus(500);

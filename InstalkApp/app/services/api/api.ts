@@ -2,6 +2,7 @@ import { ApisauceInstance, create, ApiResponse } from "apisauce"
 import { getGeneralApiProblem } from "./api-problem"
 import { ApiConfig, DEFAULT_API_CONFIG } from "./api-config"
 import * as Types from "./api.types"
+import { loadToken } from "../../utils/storage"
 
 const apiProblemOrData = (response) => {
   if (!response.ok) {
@@ -55,5 +56,17 @@ export class Api {
     })
 
     return response.data
+  }
+
+  async getMyTracks(): Promise<any> {
+    const response: ApiResponse<any> = await this.apisauce.get(
+      `/tracks/`,
+      {},
+      {
+        headers: { "Instalk-Token": await loadToken() },
+      },
+    )
+
+    return apiProblemOrData(response)
   }
 }

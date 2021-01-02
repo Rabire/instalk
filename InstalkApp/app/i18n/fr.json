@@ -11,7 +11,8 @@
     "badCredentials": "Identifant ou mot de passe incorrect",
     "emptyFields": "Des champs sont manquants",
     "shortPassword": "Le mot de passe est trop court",
-    "passwordsNotMatching": "Les mots de passe ne correspondent pas"
+    "passwordsNotMatching": "Les mots de passe ne correspondent pas",
+    "basicError": "Une erreur est survenue"
   },
   "user": {
     "instalkUsername": "Identifiant Instalk",
@@ -36,7 +37,8 @@
   },
   "tracksScreen": {
     "sectionName": "utilisateurs trackés",
-    "addTarget": "Ajouter une personne a stalk"
+    "addTarget": "Ajouter une personne a stalk",
+    "anyTracks": "Tu ne track personne"
   },
   "compareScreen": {
     "sectionName": "comparer les utilisateurs"

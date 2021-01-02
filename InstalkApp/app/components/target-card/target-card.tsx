@@ -23,7 +23,7 @@ export function TargetCard(props: TargetCardProps) {
         <SecondaryText text={dateLabel} />
       </View>
 
-      <PhotoBubble source={track.target.pictureUrl} />
+      <PhotoBubble source={track.target.pictureUrl} diameter={75} />
     </ComponentBox>
   )
 }
