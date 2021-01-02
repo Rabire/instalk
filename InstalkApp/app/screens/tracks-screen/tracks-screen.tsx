@@ -80,15 +80,6 @@ export const TracksScreen = () => {
           {mockTracks.map((track) => (
             <TargetCard key={track.id} track={track} />
           ))}
-          {/* <TargetCard />
-          <TargetCard />
-          <TargetCard />
-          <TargetCard /> */}
-
-          <Text text="zbi" />
-          <Text text="zbi" />
-          <Text text="zbi" />
-          <Text text="zb0" />
 
           <NavBarPlaceholder />
         </InnerScrollViewBox>

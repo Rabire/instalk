@@ -13,7 +13,7 @@ export function TargetCard(props: TargetCardProps) {
   const { track } = props
 
   const diffInDays = moment().diff(track.createdAt, "days")
-  const dateLabel = `tracké(e) depuis ${diffInDays} jours`
+  const dateLabel = `Tracké(e) depuis ${diffInDays} jours`
 
   return (
     <ComponentBox onPress={() => console.log(`go to taret activity ${track.target.id}`)}>

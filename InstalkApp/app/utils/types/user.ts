@@ -6,7 +6,7 @@ export interface UserObject {
   gender?: string
   penisSize?: number
   token?: string
-  tokenExpiration?: Date
-  createdAt?: Date
-  updatedAt?: Date
+  tokenExpiration?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }

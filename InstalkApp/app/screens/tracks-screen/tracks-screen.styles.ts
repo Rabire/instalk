@@ -17,5 +17,4 @@ export const ScrollView = styled.ScrollView`
 export const InnerScrollViewBox = styled.View`
   align-items: center;
   flex: 1;
-  background-color: red;
 `

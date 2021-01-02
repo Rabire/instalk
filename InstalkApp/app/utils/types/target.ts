@@ -5,6 +5,6 @@ export interface TargetObject {
   fullname?: string
   pictureUrl?: string
   credentialsToAccessId?: number
-  createdAt?: Date
-  updatedAt?: Date
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
