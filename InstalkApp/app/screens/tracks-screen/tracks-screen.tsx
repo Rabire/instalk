@@ -43,7 +43,15 @@ export const TracksScreen = () => {
           {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
 
           {trackedUsers.length > 0
-            ? trackedUsers.map((track) => <TargetCard key={track.id} track={track} />)
+            ? trackedUsers.map((track, index) => {
+                return (
+                  <TargetCard
+                    key={track.id}
+                    track={track}
+                    type={index % 2 ? "secondary" : "primary"}
+                  />
+                )
+              })
             : !isLoading &&
               !i18nError && (
                 <SmallText tx="tracksScreen.anyTracks" style={{ color: color.contrast }} />

@@ -3,7 +3,7 @@ import { Text } from "../../components"
 import { color, typography } from "../../theme"
 
 export const ComponentBox = styled.TouchableOpacity`
-  background-color: ${color.secondary};
+  background-color: ${(props) => (props.isPrimaryType ? color.secondary : color.tertiary)};
   margin-vertical: 15px;
   flex-direction: row;
   width: 100%;
