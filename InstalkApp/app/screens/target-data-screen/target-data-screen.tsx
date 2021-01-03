@@ -82,9 +82,6 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
 
         _comparisonArray.push(comparison)
         setComparisonArray([..._comparisonArray])
-
-        console.log({ _comparisonArray })
-        console.log({ comparisonArray })
       }
     }
   }, [targetDatas])
