@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Api } from "../../services/api"
 import { LoadingWheel, Screen, Text } from "../../components"
+import { getNewAndMissing } from "../../utils/stats"
 
 interface TargetDataScreenProps {
   route: { params: { targetId: number } }
@@ -35,6 +36,43 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
       })
       .finally(() => setIsLoading(false))
   }, [])
+
+  console.log("----------------")
+
+  const comparisonArray = []
+
+  if (targetDatas.length >= 2) {
+    // can do some stats
+    for (let i = 1; i < targetDatas.length; i++) {
+      const previousDataIndex = targetDatas.length - i - 1
+      const recentDataIndex = targetDatas.length - i
+
+      const followers = getNewAndMissing(
+        targetDatas[previousDataIndex].followers,
+        targetDatas[recentDataIndex].followers,
+      )
+
+      const following = getNewAndMissing(
+        targetDatas[targetDatas.length - i - 1].following,
+        targetDatas[targetDatas.length - i].following,
+      )
+
+      const comparison = {
+        start: targetDatas[previousDataIndex].createdAt,
+        end: targetDatas[recentDataIndex].createdAt,
+        newFollowers: followers.new,
+        missingFollowers: followers.missing,
+        newFollowing: following.new,
+        missingFollowing: following.missing,
+      }
+
+      comparisonArray.push(comparison)
+    }
+
+    console.log(comparisonArray)
+  } else {
+    // come back later, not inof exports
+  }
 
   return (
     <Screen preset="scroll">
