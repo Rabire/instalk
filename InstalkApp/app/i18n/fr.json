@@ -38,7 +38,8 @@
   "tracksScreen": {
     "sectionName": "utilisateurs trackés",
     "addTarget": "Ajouter une personne a stalk",
-    "anyTracks": "Tu ne track personne"
+    "anyTracks": "Tu ne track personne",
+    "notEnoughData": "Pas assez de donnés, reviens dans 1 ou 2 jours"
   },
   "compareScreen": {
     "sectionName": "comparer les utilisateurs"
