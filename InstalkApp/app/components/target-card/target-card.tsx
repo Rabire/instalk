@@ -4,6 +4,7 @@ import { ComponentBox, PrimaryText, SecondaryText } from "./target-card.styles"
 import { PhotoBubble } from "../"
 import { TrackObject } from "../../utils/types"
 import moment from "moment"
+import { useNavigation } from "@react-navigation/native"
 
 interface TargetCardProps {
   track: TrackObject
@@ -28,11 +29,15 @@ export function TargetCard(props: TargetCardProps) {
 
   const imageHalf = <PhotoBubble source={track.target.pictureUrl} diameter={75} />
 
+  const navigation = useNavigation()
+
+  const goToProfile = () =>
+    navigation.navigate("targetData", {
+      targetId: track.target.id,
+    })
+
   return (
-    <ComponentBox
-      isPrimaryType={isPrimaryType}
-      onPress={() => console.log(`go to taret activity ${track.target.id}`)}
-    >
+    <ComponentBox isPrimaryType={isPrimaryType} onPress={goToProfile}>
       {isPrimaryType ? textHalf : imageHalf}
       {isPrimaryType ? imageHalf : textHalf}
     </ComponentBox>

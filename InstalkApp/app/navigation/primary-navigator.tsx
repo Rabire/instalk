@@ -6,6 +6,7 @@ import {
   CreateAccountScreen,
   InstaCredentialsScreen,
   TracksScreen,
+  TargetDataScreen,
 } from "../screens"
 
 export type PrimaryParamList = {
@@ -14,6 +15,7 @@ export type PrimaryParamList = {
   createAccount: undefined
   instaCredentials: undefined
   tracks: undefined
+  targetData: undefined
 }
 
 const Stack = createNativeStackNavigator<PrimaryParamList>()
@@ -32,6 +34,7 @@ export function PrimaryNavigator() {
       <Stack.Screen name="createAccount" component={CreateAccountScreen} />
       <Stack.Screen name="instaCredentials" component={InstaCredentialsScreen} />
       <Stack.Screen name="tracks" component={TracksScreen} />
+      <Stack.Screen name="targetData" component={TargetDataScreen} />
     </Stack.Navigator>
   )
 }
