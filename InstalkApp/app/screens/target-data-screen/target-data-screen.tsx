@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Api } from "../../services/api"
+import { Linking } from "react-native"
 import { LoadingWheel, Screen, NavBar } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
 import {
@@ -109,25 +110,37 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
               <DateText text={headerDateLabel(comparison.start)} />
 
               {comparison.missingFollowers.map((follower) => (
-                <FollowUnfollowText key={follower}>
+                <FollowUnfollowText
+                  key={follower}
+                  onPress={() => Linking.openURL(`instagram://user?username=${follower}`)}
+                >
                   <RedText text={follower} /> s’est désabonné à @{targetProfile.username}
                 </FollowUnfollowText>
               ))}
 
               {comparison.newFollowers.map((follower) => (
-                <FollowUnfollowText key={follower}>
+                <FollowUnfollowText
+                  key={follower}
+                  onPress={() => Linking.openURL(`instagram://user?username=${follower}`)}
+                >
                   <GreenText text={follower} /> s’est abonné à @{targetProfile.username}
                 </FollowUnfollowText>
               ))}
 
               {comparison.missingFollowing.map((follower) => (
-                <FollowUnfollowText key={follower}>
+                <FollowUnfollowText
+                  key={follower}
+                  onPress={() => Linking.openURL(`instagram://user?username=${follower}`)}
+                >
                   @{targetProfile.username} a arrêter de suivre <RedText text={follower} />
                 </FollowUnfollowText>
               ))}
 
               {comparison.newFollowing.map((follower) => (
-                <FollowUnfollowText key={follower}>
+                <FollowUnfollowText
+                  key={follower}
+                  onPress={() => Linking.openURL(`instagram://user?username=${follower}`)}
+                >
                   @{targetProfile.username} a commencer à suivre <GreenText text={follower} />
                 </FollowUnfollowText>
               ))}
