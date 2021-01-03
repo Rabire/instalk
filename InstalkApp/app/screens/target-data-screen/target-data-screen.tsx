@@ -16,6 +16,7 @@ import { color } from "../../theme"
 import { SmallText } from "../../enum/styles"
 import { getNewAndMissing } from "../../utils/stats"
 import moment from "moment"
+import { translate } from "../../i18n"
 
 interface TargetDataScreenProps {
   route: { params: { targetId: number } }
@@ -34,11 +35,7 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
 
   const instalkApi = new Api()
 
-  // console.log({ targetProfile })
-
   useEffect(() => {
-    console.log("useEffect")
-
     setIsLoading(true)
 
     instalkApi
@@ -59,7 +56,6 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
 
   useEffect(() => {
     if (targetDatas.length >= 2) {
-      console.log("IFFFFFFFFFF")
       const _comparisonArray = []
       for (let i = 1; i < targetDatas.length; i++) {
         const previousDataIndex = targetDatas.length - i - 1
@@ -93,6 +89,11 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
     }
   }, [targetDatas])
 
+  const headerDateLabel = (date) => {
+    const weekDayShort = translate(`date.weekDayShort.${moment(date).format("dddd")}`)
+    return `${weekDayShort} ${moment(date).format("L")}`
+  }
+
   return (
     <Screen preset="fixed">
       <ScrollView>
@@ -108,7 +109,7 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
 
           {comparisonArray.map((comparison) => (
             <ContentBox key={comparison.start}>
-              <DateText text={`${moment(comparison.start).format("L")}`} />
+              <DateText text={headerDateLabel(comparison.start)} />
 
               {comparison.missingFollowers.map((follower) => (
                 <FollowUnfollowText key={follower}>
