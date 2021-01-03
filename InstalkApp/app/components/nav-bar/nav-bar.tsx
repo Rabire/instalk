@@ -13,7 +13,7 @@ export function NavBar(props: NavBarProps) {
 
   const navigation = useNavigation()
 
-  const openInstagram = () => Linking.openURL("instagram://user?username=aroufgangsta91o")
+  const openInstagram = () => Linking.openURL("instagram://user?username=juldetp")
   const goToHome = () => console.log('navigation.navigate("home")')
   const goToProfile = () => console.log('navigation.navigate("profile")')
 
