@@ -92,6 +92,9 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
     return `${weekDayShort} ${moment(date).format("L")}`
   }
 
+  const goToInstagramProfile = (instaUsername) =>
+    Linking.openURL(`instagram://user?username=${instaUsername}`)
+
   return (
     <Screen preset="fixed">
       <ScrollView>
@@ -110,37 +113,25 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
               <DateText text={headerDateLabel(comparison.start)} />
 
               {comparison.missingFollowers.map((follower) => (
-                <FollowUnfollowText
-                  key={follower}
-                  onPress={() => Linking.openURL(`instagram://user?username=${follower}`)}
-                >
+                <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
                   <RedText text={follower} /> s’est désabonné à @{targetProfile.username}
                 </FollowUnfollowText>
               ))}
 
               {comparison.newFollowers.map((follower) => (
-                <FollowUnfollowText
-                  key={follower}
-                  onPress={() => Linking.openURL(`instagram://user?username=${follower}`)}
-                >
+                <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
                   <GreenText text={follower} /> s’est abonné à @{targetProfile.username}
                 </FollowUnfollowText>
               ))}
 
               {comparison.missingFollowing.map((follower) => (
-                <FollowUnfollowText
-                  key={follower}
-                  onPress={() => Linking.openURL(`instagram://user?username=${follower}`)}
-                >
+                <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
                   @{targetProfile.username} a arrêter de suivre <RedText text={follower} />
                 </FollowUnfollowText>
               ))}
 
               {comparison.newFollowing.map((follower) => (
-                <FollowUnfollowText
-                  key={follower}
-                  onPress={() => Linking.openURL(`instagram://user?username=${follower}`)}
-                >
+                <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
                   @{targetProfile.username} a commencer à suivre <GreenText text={follower} />
                 </FollowUnfollowText>
               ))}
