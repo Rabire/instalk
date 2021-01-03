@@ -13,7 +13,7 @@ export const color = {
   secondary: palette.summerSky,
   tertiary: palette.heliotrope,
 
-  refused: palette.cinnabar,
+  refused: palette.pastelRed,
   accepted: palette.pastelGreen,
 
   error: palette.angry,
