@@ -10,6 +10,9 @@ export const palette = {
   summerSky: "#3FA9F5",
   heliotrope: "#EA80FC",
 
+  cinnabar: "#E73131",
+  pastelGreen: "#87E977",
+
   lightGrey: "#939AA4",
   lighterGrey: "#CDD4DA",
   angry: "#dd3333",

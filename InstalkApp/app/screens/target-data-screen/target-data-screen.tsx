@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { Api } from "../../services/api"
-import { LoadingWheel, Screen, Text } from "../../components"
+import { LoadingWheel, Screen, NavBar } from "../../components"
+import { InstalkLogoMeduim } from "../../components/svg"
+import {
+  NavBarPlaceholder,
+  ScrollView,
+  InnerScrollViewBox,
+  DateText,
+  FollowUnfollowText,
+  RedText,
+  GreenText,
+} from "./target-data-screen.styles"
 import { getNewAndMissing } from "../../utils/stats"
 
 interface TargetDataScreenProps {
@@ -25,7 +35,7 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
       .getTargetDataById(targetId)
       .then((response) => {
         if (response.data) {
-          setTargetDatas(response.data.target)
+          setTargetProfile(response.data.target)
           setTargetDatas(response.data.targetDatas)
         } else {
           // setI18nError("errors.basicError")
@@ -36,8 +46,6 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
       })
       .finally(() => setIsLoading(false))
   }, [])
-
-  console.log("----------------")
 
   const comparisonArray = []
 
@@ -68,16 +76,43 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
 
       comparisonArray.push(comparison)
     }
-
-    console.log(comparisonArray)
   } else {
     // come back later, not inof exports
   }
 
   return (
-    <Screen preset="scroll">
-      <Text text="targetDataScreen" />
-      <LoadingWheel isVisible={isLoading} />
+    <Screen preset="fixed">
+      <ScrollView>
+        <InnerScrollViewBox>
+          <InstalkLogoMeduim customStyles={{ marginBottom: 30 }} />
+
+          <LoadingWheel isVisible={isLoading} />
+
+          {comparisonArray.map((comparison) => {
+            return (
+              <>
+                <DateText text={comparison.start} />
+
+                {comparison.missingFollowers.map((follower) => (
+                  <FollowUnfollowText key={follower}>
+                    <RedText>{follower}</RedText> s’est désabonné à @{targetProfile.username}
+                  </FollowUnfollowText>
+                ))}
+
+                {comparison.newFollowers.map((follower) => (
+                  <FollowUnfollowText key={follower}>
+                    <GreenText>{follower}</GreenText> s’est abonné à @{targetProfile.username}
+                  </FollowUnfollowText>
+                ))}
+              </>
+            )
+          })}
+
+          <NavBarPlaceholder />
+        </InnerScrollViewBox>
+      </ScrollView>
+
+      <NavBar activeScreen="home" />
     </Screen>
   )
 }

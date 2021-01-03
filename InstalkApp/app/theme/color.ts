@@ -13,6 +13,9 @@ export const color = {
   secondary: palette.summerSky,
   tertiary: palette.heliotrope,
 
+  refused: palette.cinnabar,
+  accepted: palette.pastelGreen,
+
   error: palette.angry,
 
   line: palette.offWhite,
