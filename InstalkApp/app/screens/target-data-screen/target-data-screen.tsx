@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Api } from "../../services/api"
 import { Linking } from "react-native"
-import { LoadingWheel, Screen, NavBar } from "../../components"
+import { LoadingWheel, Screen, NavBar, Text, PhotoBubble } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
 import {
   NavBarPlaceholder,
@@ -12,8 +12,10 @@ import {
   RedText,
   GreenText,
   ContentBox,
+  TargetDataBox,
+  TargetTextBox,
 } from "./target-data-screen.styles"
-import { color } from "../../theme"
+import { color, typography } from "../../theme"
 import { SmallText } from "../../enum/styles"
 import { getNewAndMissing } from "../../utils/stats"
 import moment from "moment"
@@ -103,6 +105,25 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
 
           <LoadingWheel isVisible={isLoading} />
           {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
+
+          {targetProfile && targetDatas.length > 0 && (
+            <TargetDataBox>
+              <PhotoBubble source={targetProfile.pictureUrl} diameter={130} />
+              <TargetTextBox>
+                <SmallText
+                  text={targetProfile.fullname}
+                  style={{ fontSize: 18, marginBottom: 5, fontFamily: typography.primaryBold }}
+                />
+                <SmallText text={`@${targetProfile.username}`} style={{ fontSize: 14 }} />
+                <SmallText
+                  text={`${targetDatas[targetDatas.length - 1].followers.length} / ${
+                    targetDatas[targetDatas.length - 1].following.length
+                  }`}
+                  style={{ fontSize: 12 }}
+                />
+              </TargetTextBox>
+            </TargetDataBox>
+          )}
 
           {targetDatas.length < 2 && !isLoading && !i18nError && (
             <SmallText tx="tracksScreen.notEnoughData" style={{ color: color.dim }} />

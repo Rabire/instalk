@@ -32,7 +32,7 @@ export const DateText = styled(Text)`
   padding: 8px;
   color: ${color.tertiary};
   font-family: ${typography.primary};
-  font-size: 12px;
+  font-size: 14px;
   margin-vertical: 13px;
 `
 
@@ -40,7 +40,7 @@ const commonText = `padding-horizontal: ${vw(10)}px;
 width: 100%;
 color: ${color.contrast};
 font-family: ${typography.primary};
-font-size: 12px;
+font-size: 14px;
 margin-vertical: 3px;
 `
 
@@ -56,4 +56,17 @@ export const RedText = styled(Text)`
 export const GreenText = styled(Text)`
   ${commonText}
   color: ${color.accepted}; ;
+`
+
+export const TargetDataBox = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+`
+
+export const TargetTextBox = styled.View`
+  align-items: center;
+  margin-left: 30px;
 `
