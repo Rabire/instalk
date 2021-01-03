@@ -1,4 +1,4 @@
-const { User, Target, Track } = require("../models");
+const { User, Target, Track, TargetData } = require("../models");
 const { tryGetUserFromToken } = require("../utils/user.js");
 const axios = require("axios");
 
@@ -122,6 +122,47 @@ exports.getAllMine = async (req, res) => {
     });
 
     return res.status(200).send({ targets: stalkerTargets });
+  } catch (err) {
+    console.log(err);
+    return res.sendStatus(500);
+  }
+};
+
+exports.getTargetData = async (req, res) => {
+  let stalker;
+  try {
+    stalker = await tryGetUserFromToken(req, res);
+  } catch {
+    return res.status(401).send("invalid token");
+  }
+
+  const requestedTargetId = parseInt(req.params.id);
+
+  try {
+    const target = await Target.findOne({
+      where: {
+        id: requestedTargetId,
+      },
+    });
+
+    if (!target) return res.status(401).send("unknown target");
+
+    const targetDatas = await TargetData.findAll({
+      raw: true,
+      where: {
+        targetId: requestedTargetId,
+      },
+    });
+
+    const parsedTargetData = targetDatas.map((targetData) => {
+      return {
+        ...targetData,
+        followers: JSON.parse(targetData.followers),
+        following: JSON.parse(targetData.following),
+      };
+    });
+
+    return res.status(200).send({ target, targetDatas: parsedTargetData });
   } catch (err) {
     console.log(err);
     return res.sendStatus(500);

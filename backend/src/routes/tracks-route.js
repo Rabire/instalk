@@ -3,4 +3,5 @@ module.exports = (app) => {
 
   app.get("/tracks", targets.getAllMine);
   app.post("/track/", targets.create);
+  app.get("/target-data/:id", targets.getTargetData);
 };
