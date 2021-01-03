@@ -16,6 +16,10 @@ export const ScrollView = styled.ScrollView`
   margin-bottom: 65px;
 `
 
+export const ContentBox = styled.View`
+  width: 100%;
+`
+
 export const InnerScrollViewBox = styled.View`
   align-items: center;
   flex: 1;
@@ -32,7 +36,7 @@ export const DateText = styled(Text)`
   margin-vertical: 13px;
 `
 
-const commonText = `padding-horizontal: ${vw(16)}px;
+const commonText = `padding-horizontal: ${vw(10)}px;
 width: 100%;
 color: ${color.contrast};
 font-family: ${typography.primary};

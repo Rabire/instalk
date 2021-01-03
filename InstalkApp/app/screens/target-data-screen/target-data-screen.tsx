@@ -10,6 +10,7 @@ import {
   FollowUnfollowText,
   RedText,
   GreenText,
+  ContentBox,
 } from "./target-data-screen.styles"
 import { getNewAndMissing } from "../../utils/stats"
 import moment from "moment"
@@ -90,7 +91,7 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
           <LoadingWheel isVisible={isLoading} />
 
           {comparisonArray.map((comparison) => (
-            <>
+            <ContentBox key={comparison.start}>
               <DateText text={`${moment(comparison.start).format("L")}`} />
 
               {comparison.missingFollowers.map((follower) => (
@@ -116,7 +117,7 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
                   @{targetProfile.username} a commencer à suivre <GreenText text={follower} />
                 </FollowUnfollowText>
               ))}
-            </>
+            </ContentBox>
           ))}
 
           <NavBarPlaceholder />
