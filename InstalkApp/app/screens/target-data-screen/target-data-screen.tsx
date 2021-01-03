@@ -12,6 +12,7 @@ import {
   GreenText,
 } from "./target-data-screen.styles"
 import { getNewAndMissing } from "../../utils/stats"
+import moment from "moment"
 
 interface TargetDataScreenProps {
   route: { params: { targetId: number } }
@@ -88,25 +89,35 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
 
           <LoadingWheel isVisible={isLoading} />
 
-          {comparisonArray.map((comparison) => {
-            return (
-              <>
-                <DateText text={comparison.start} />
+          {comparisonArray.map((comparison) => (
+            <>
+              <DateText text={`${moment(comparison.start).format("L")}`} />
 
-                {comparison.missingFollowers.map((follower) => (
-                  <FollowUnfollowText key={follower}>
-                    <RedText>{follower}</RedText> s’est désabonné à @{targetProfile.username}
-                  </FollowUnfollowText>
-                ))}
+              {comparison.missingFollowers.map((follower) => (
+                <FollowUnfollowText key={follower}>
+                  <RedText text={follower} /> s’est désabonné à @{targetProfile.username}
+                </FollowUnfollowText>
+              ))}
 
-                {comparison.newFollowers.map((follower) => (
-                  <FollowUnfollowText key={follower}>
-                    <GreenText>{follower}</GreenText> s’est abonné à @{targetProfile.username}
-                  </FollowUnfollowText>
-                ))}
-              </>
-            )
-          })}
+              {comparison.newFollowers.map((follower) => (
+                <FollowUnfollowText key={follower}>
+                  <GreenText text={follower} /> s’est abonné à @{targetProfile.username}
+                </FollowUnfollowText>
+              ))}
+
+              {comparison.missingFollowing.map((follower) => (
+                <FollowUnfollowText key={follower}>
+                  @{targetProfile.username} a arrêter de suivre <RedText text={follower} />
+                </FollowUnfollowText>
+              ))}
+
+              {comparison.newFollowing.map((follower) => (
+                <FollowUnfollowText key={follower}>
+                  @{targetProfile.username} a commencer à suivre <GreenText text={follower} />
+                </FollowUnfollowText>
+              ))}
+            </>
+          ))}
 
           <NavBarPlaceholder />
         </InnerScrollViewBox>
