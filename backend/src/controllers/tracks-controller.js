@@ -152,6 +152,7 @@ exports.getTargetData = async (req, res) => {
       where: {
         targetId: requestedTargetId,
       },
+      order: [["createdAt", "ASC"]],
     });
 
     const parsedTargetData = targetDatas.map((targetData) => {
@@ -162,7 +163,9 @@ exports.getTargetData = async (req, res) => {
       };
     });
 
-    return res.status(200).send({ target, targetDatas: parsedTargetData });
+    return res
+      .status(200)
+      .send({ data: { target, targetDatas: parsedTargetData } });
   } catch (err) {
     console.log(err);
     return res.sendStatus(500);

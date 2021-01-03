@@ -69,4 +69,16 @@ export class Api {
 
     return apiProblemOrData(response)
   }
+
+  async getTargetDataById(targetId): Promise<any> {
+    const response: ApiResponse<any> = await this.apisauce.get(
+      `/target-data/${targetId}/`,
+      {},
+      {
+        headers: { "Instalk-Token": await loadToken() },
+      },
+    )
+
+    return apiProblemOrData(response)
+  }
 }
