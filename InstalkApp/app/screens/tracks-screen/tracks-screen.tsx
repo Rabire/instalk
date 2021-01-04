@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import {} from "react-native"
-import { Screen, NavBar, AddTarget, TargetCard, LoadingWheel } from "../../components"
+import { Screen, AddTarget, TargetCard, LoadingWheel } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
-import { NavBarPlaceholder, ScrollView, InnerScrollViewBox } from "./tracks-screen.styles"
 import { Api } from "../../services/api"
+import { screenStyle } from "./tracks-screen.styles"
 import { SmallText } from "../../enum/styles"
 import { color } from "../../theme"
 
@@ -31,37 +31,23 @@ export const TracksScreen = () => {
   }, [])
 
   return (
-    <Screen preset="fixed">
-      <ScrollView>
-        <InnerScrollViewBox>
-          <InstalkLogoMeduim />
+    <Screen preset="scroll" style={screenStyle}>
+      <InstalkLogoMeduim />
 
-          <AddTarget />
+      <AddTarget />
 
-          <LoadingWheel isVisible={isLoading} />
+      <LoadingWheel isVisible={isLoading} />
 
-          {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
+      {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
 
-          {trackedUsers.length > 0
-            ? trackedUsers.map((track, index) => {
-                return (
-                  <TargetCard
-                    key={track.id}
-                    track={track}
-                    type={index % 2 ? "secondary" : "primary"}
-                  />
-                )
-              })
-            : !isLoading &&
-              !i18nError && (
-                <SmallText tx="tracksScreen.anyTracks" style={{ color: color.contrast }} />
-              )}
-
-          <NavBarPlaceholder />
-        </InnerScrollViewBox>
-      </ScrollView>
-
-      <NavBar activeScreen="home" />
+      {trackedUsers.length > 0
+        ? trackedUsers.map((track, index) => {
+            return (
+              <TargetCard key={track.id} track={track} type={index % 2 ? "secondary" : "primary"} />
+            )
+          })
+        : !isLoading &&
+          !i18nError && <SmallText tx="tracksScreen.anyTracks" style={{ color: color.contrast }} />}
     </Screen>
   )
 }
