@@ -1,7 +1,7 @@
 import React from "react"
 import { Screen, HomeItem } from "../../components"
-import { InstalkLogoMeduim } from "../../components/svg"
-import { ScreenStyles } from "./home-screen.styles"
+import { InstalkLogoMeduim, GearSvg } from "../../components/svg"
+import { ScreenStyles, GearBox } from "./home-screen.styles"
 import { HomeTrackSvg, HomeCompareSvg, HomeInteractionsSvg } from "../../components/svg"
 import { useNavigation } from "@react-navigation/native"
 
@@ -28,6 +28,10 @@ export const HomeScreen = () => {
         InnerSvg={<HomeInteractionsSvg />}
         onPress={() => console.log("Interactions")}
       />
+
+      <GearBox onPress={() => console.log("goto parameters/profile")}>
+        <GearSvg />
+      </GearBox>
     </Screen>
   )
 }

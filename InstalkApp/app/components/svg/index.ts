@@ -10,3 +10,4 @@ export * from "./HomeCompareSvg"
 export * from "./HomeInteractionsSvg"
 
 export * from "./AddSvg"
+export * from "./GearSvg"
