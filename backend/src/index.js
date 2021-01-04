@@ -6,7 +6,7 @@ const moment = require("moment");
 const getTargetsDataNightJob = require("./recurrent-tasks/getTargetsDataNightJob");
 const { TargetData, Target } = require("./models");
 
-const nightBot = async () => {
+const nightBot = (async () => {
   const browser = await puppeteer.launch({
     headless: false,
     args: ["--window-size=1000,800"],
@@ -22,9 +22,9 @@ const nightBot = async () => {
   await getTargetsDataNightJob(page);
 
   await browser.close();
-};
+})();
 
-const apiServerRunning = (() => {
+const apiServerRunning = () => {
   const app = express();
   const port = 3000;
 
@@ -37,7 +37,7 @@ const apiServerRunning = (() => {
   app.listen(port, () =>
     console.log(`Example listening at http://localhost:${port}`)
   );
-})();
+};
 
 const getTargetsDataAndDoSomeStats = async () => {
   const targetDatas = await TargetData.findAll({
@@ -109,12 +109,10 @@ const createTarget = () => {
   });
 };
 
-const agtNewFollowers = {
-  followers: '["t_azr10","cantin83"]',
-};
-
 const updateTargetData = () => {
-  console.log("ntm");
+  const agtNewFollowers = {
+    followers: '["t_azr10","cantin83"]',
+  };
   TargetData.update(agtNewFollowers, {
     where: { id: 14 },
   });
