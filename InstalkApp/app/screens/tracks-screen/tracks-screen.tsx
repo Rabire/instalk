@@ -3,7 +3,7 @@ import {} from "react-native"
 import { Screen, AddTarget, TargetCard, LoadingWheel } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
 import { Api } from "../../services/api"
-import { screenStyle } from "./tracks-screen.styles"
+import { screenStyle } from "../../enum/styles"
 import { SmallText } from "../../enum/styles"
 import { color } from "../../theme"
 

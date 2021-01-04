@@ -2,27 +2,15 @@ import styled from "styled-components/native"
 import { vw } from "../../utils/viewport-units"
 import { Text } from "../../components"
 import { color, typography } from "../../theme"
+import { ViewStyle } from "react-native"
 
-export const NavBarPlaceholder = styled.View`
-  height: 65px;
-  margin-top: ${vw(17)}px;
-  background-color: red;
-`
-
-export const ScrollView = styled.ScrollView`
-  flex: 1;
-  width: 100%;
-  padding-vertical: ${vw(17)}px;
-  margin-bottom: 65px;
-`
+export const screenStyle: ViewStyle = {
+  alignItems: "center",
+  paddingVertical: vw(13),
+}
 
 export const ContentBox = styled.View`
   width: 100%;
-`
-
-export const InnerScrollViewBox = styled.View`
-  align-items: center;
-  flex: 1;
 `
 
 export const DateText = styled(Text)`

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { Api } from "../../services/api"
 import { Linking } from "react-native"
-import { LoadingWheel, Screen, NavBar, Text, PhotoBubble } from "../../components"
+import { LoadingWheel, Screen, PhotoBubble } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
 import {
-  NavBarPlaceholder,
-  ScrollView,
-  InnerScrollViewBox,
   DateText,
   FollowUnfollowText,
   RedText,
@@ -14,6 +11,7 @@ import {
   ContentBox,
   TargetDataBox,
   TargetTextBox,
+  screenStyle,
 } from "./target-data-screen.styles"
 import { color, typography } from "../../theme"
 import { SmallText } from "../../enum/styles"
@@ -98,72 +96,64 @@ export const TargetDataScreen = (props: TargetDataScreenProps) => {
     Linking.openURL(`instagram://user?username=${instaUsername}`)
 
   return (
-    <Screen preset="fixed">
-      <ScrollView>
-        <InnerScrollViewBox>
-          <InstalkLogoMeduim customStyles={{ marginBottom: 30 }} />
+    <Screen preset="scroll" style={screenStyle}>
+      <InstalkLogoMeduim customStyles={{ marginBottom: 30 }} />
 
-          <LoadingWheel isVisible={isLoading} />
-          {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
+      <LoadingWheel isVisible={isLoading} />
+      {i18nError && <SmallText tx={i18nError} style={{ color: color.error }} />}
 
-          {targetProfile && targetDatas.length > 0 && (
-            <TargetDataBox>
-              <PhotoBubble source={targetProfile.pictureUrl} diameter={130} />
-              <TargetTextBox>
-                <SmallText
-                  text={targetProfile.fullname}
-                  style={{ fontSize: 18, marginBottom: 5, fontFamily: typography.primaryBold }}
-                />
-                <SmallText text={`@${targetProfile.username}`} style={{ fontSize: 14 }} />
-                <SmallText
-                  text={`${targetDatas[targetDatas.length - 1].followers.length} / ${
-                    targetDatas[targetDatas.length - 1].following.length
-                  }`}
-                  style={{ fontSize: 12 }}
-                />
-              </TargetTextBox>
-            </TargetDataBox>
-          )}
+      {targetProfile && targetDatas.length > 0 && (
+        <TargetDataBox>
+          <PhotoBubble source={targetProfile.pictureUrl} diameter={130} />
+          <TargetTextBox>
+            <SmallText
+              text={targetProfile.fullname}
+              style={{ fontSize: 18, marginBottom: 5, fontFamily: typography.primaryBold }}
+            />
+            <SmallText text={`@${targetProfile.username}`} style={{ fontSize: 14 }} />
+            <SmallText
+              text={`${targetDatas[targetDatas.length - 1].followers.length} / ${
+                targetDatas[targetDatas.length - 1].following.length
+              }`}
+              style={{ fontSize: 12 }}
+            />
+          </TargetTextBox>
+        </TargetDataBox>
+      )}
 
-          {targetDatas.length < 2 && !isLoading && !i18nError && (
-            <SmallText tx="tracksScreen.notEnoughData" style={{ color: color.dim }} />
-          )}
+      {targetDatas.length < 2 && !isLoading && !i18nError && (
+        <SmallText tx="tracksScreen.notEnoughData" style={{ color: color.dim }} />
+      )}
 
-          {comparisonArray.map((comparison) => (
-            <ContentBox key={comparison.start}>
-              <DateText text={headerDateLabel(comparison.start)} />
+      {comparisonArray.map((comparison) => (
+        <ContentBox key={comparison.start}>
+          <DateText text={headerDateLabel(comparison.start)} />
 
-              {comparison.missingFollowers.map((follower) => (
-                <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
-                  <RedText text={follower} /> s’est désabonné à @{targetProfile.username}
-                </FollowUnfollowText>
-              ))}
-
-              {comparison.newFollowers.map((follower) => (
-                <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
-                  <GreenText text={follower} /> s’est abonné à @{targetProfile.username}
-                </FollowUnfollowText>
-              ))}
-
-              {comparison.missingFollowing.map((follower) => (
-                <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
-                  @{targetProfile.username} a arrêter de suivre <RedText text={follower} />
-                </FollowUnfollowText>
-              ))}
-
-              {comparison.newFollowing.map((follower) => (
-                <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
-                  @{targetProfile.username} a commencer à suivre <GreenText text={follower} />
-                </FollowUnfollowText>
-              ))}
-            </ContentBox>
+          {comparison.missingFollowers.map((follower) => (
+            <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
+              <RedText text={follower} /> s’est désabonné à @{targetProfile.username}
+            </FollowUnfollowText>
           ))}
 
-          <NavBarPlaceholder />
-        </InnerScrollViewBox>
-      </ScrollView>
+          {comparison.newFollowers.map((follower) => (
+            <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
+              <GreenText text={follower} /> s’est abonné à @{targetProfile.username}
+            </FollowUnfollowText>
+          ))}
 
-      <NavBar activeScreen="home" />
+          {comparison.missingFollowing.map((follower) => (
+            <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
+              @{targetProfile.username} a arrêter de suivre <RedText text={follower} />
+            </FollowUnfollowText>
+          ))}
+
+          {comparison.newFollowing.map((follower) => (
+            <FollowUnfollowText key={follower} onPress={() => goToInstagramProfile(follower)}>
+              @{targetProfile.username} a commencer à suivre <GreenText text={follower} />
+            </FollowUnfollowText>
+          ))}
+        </ContentBox>
+      ))}
     </Screen>
   )
 }
