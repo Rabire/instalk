@@ -1,7 +1,7 @@
 import React from "react"
-import { Screen, HomeItem, NavBar } from "../../components"
+import { Screen, HomeItem } from "../../components"
 import { InstalkLogoMeduim } from "../../components/svg"
-import { NavBarPlaceholder, ScreenStyles } from "./home-screen.styles"
+import { ScreenStyles } from "./home-screen.styles"
 import { HomeTrackSvg, HomeCompareSvg, HomeInteractionsSvg } from "../../components/svg"
 import { useNavigation } from "@react-navigation/native"
 
@@ -10,7 +10,7 @@ export const HomeScreen = () => {
 
   return (
     <Screen preset="fixed" style={ScreenStyles}>
-      <InstalkLogoMeduim />
+      <InstalkLogoMeduim customStyles={{ marginBottom: 80 }} />
 
       <HomeItem
         i18nInnerText="tracksScreen.sectionName"
@@ -28,9 +28,6 @@ export const HomeScreen = () => {
         InnerSvg={<HomeInteractionsSvg />}
         onPress={() => console.log("Interactions")}
       />
-
-      <NavBarPlaceholder />
-      <NavBar activeScreen="home" />
     </Screen>
   )
 }

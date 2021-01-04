@@ -13,6 +13,7 @@ export const ComponentBox = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  margin-vertical: 20px;
 `
 
 export const InnerText = styled(Text)`
