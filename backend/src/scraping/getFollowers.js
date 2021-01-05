@@ -25,6 +25,8 @@ module.exports = async (page, target) => {
 
       let lastfollowersCollectedCount = 0;
       let stuckRound = 0;
+      const limit =
+        targetFollowersCount - Math.floor(targetFollowersCount * 0.02);
 
       while (followersCollected.length < targetFollowersCount) {
         const actualCount = followersCollected.length;
@@ -48,13 +50,7 @@ module.exports = async (page, target) => {
           stuckRound = 0;
         }
 
-        if (
-          stuckRound > 500 &&
-          actualCount >
-            targetFollowersCount - Math.floor(targetFollowersCount * 0.01)
-        ) {
-          break;
-        }
+        if (stuckRound > 500 && actualCount >= limit) break;
 
         progressBar.update(actualCount);
       }
