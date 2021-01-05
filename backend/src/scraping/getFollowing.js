@@ -1,3 +1,5 @@
+const cliProgress = require("cli-progress");
+
 module.exports = async (page, target) => {
   try {
     const targetFollowingCount = await page.evaluate(() =>
@@ -7,37 +9,59 @@ module.exports = async (page, target) => {
       )
     );
 
-    let followingUsernames = [];
+    let followingCollected = [];
 
     if (targetFollowingCount > 0) {
       await page.click('a[href*="following"][class="-nal3 "]'); // following link
 
       await page.waitForSelector('div[class="isgrP"]'); // scrollable following modal
 
-      while (followingUsernames.length < targetFollowingCount) {
+      const progressBar = new cliProgress.SingleBar(
+        {},
+        cliProgress.Presets.legacy
+      );
+      progressBar.start(targetFollowingCount, 0);
+
+      let lastfollowingCollectedCount = 0;
+      let stuckRound = 0;
+      const limit =
+        targetFollowingCount - Math.floor(targetFollowingCount * 0.02);
+
+      while (followingCollected.length < targetFollowingCount) {
+        const actualCount = followingCollected.length;
+
         await page.evaluate(() => {
           document.querySelector('div[class="isgrP"]').scroll(0, 120000); // scrollable following modal
         });
 
-        followingUsernames = await page.evaluate(() => {
-          let followingUsernamesFromWeb = Array.from(
+        followingCollected = await page.evaluate(() => {
+          let followingCollectedFromWeb = Array.from(
             document.querySelectorAll('a[class="FPmhX notranslate  _0imsa "]') // usernames list
           );
-          const followingUsernames = [...followingUsernamesFromWeb];
-          return followingUsernames.map((follow) => follow.innerText);
+          const followingCollected = [...followingCollectedFromWeb];
+          return followingCollected.map((follow) => follow.innerText);
         });
 
-        console.log(
-          `found: ${followingUsernames.length}/${targetFollowingCount}`
-        );
+        if (actualCount === lastfollowingCollectedCount) {
+          stuckRound++;
+        } else {
+          lastfollowingCollectedCount = actualCount;
+          stuckRound = 0;
+        }
+
+        if (stuckRound > 1000 && actualCount >= limit) break;
+
+        progressBar.update(actualCount);
       }
+
+      await progressBar.stop();
 
       await page.evaluate(() => {
         document.querySelectorAll('button[class="wpO6b "]')[1].click(); // close followers modal button
       });
     }
 
-    return followingUsernames;
+    return followingCollected;
   } catch {
     throw "getFollowing error";
   }

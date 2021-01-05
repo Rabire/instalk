@@ -50,7 +50,7 @@ module.exports = async (page, target) => {
           stuckRound = 0;
         }
 
-        if (stuckRound > 500 && actualCount >= limit) break;
+        if (stuckRound > 1000 && actualCount >= limit) break;
 
         progressBar.update(actualCount);
       }
