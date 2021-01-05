@@ -1,12 +1,15 @@
+import { useNavigation } from "@react-navigation/native"
 import React from "react"
-import { View } from "react-native"
+import { TouchableOpacity } from "react-native"
 import Svg, { G, Path, Image, Use, Defs, Pattern, ClipPath } from "react-native-svg"
 
 export const InstalkLogoMeduim = (props) => {
   const { customStyles } = props
 
+  const navigation = useNavigation()
+
   return (
-    <View style={customStyles}>
+    <TouchableOpacity style={customStyles} onPress={() => navigation.navigate("home")}>
       <Svg width="192" height="70" fill="none" viewBox="0 0 192 70">
         <G clipPath="url(#clip0)">
           <Path fill="url(#pattern0)" d="M0 0H191.154V70H0z"></Path>
@@ -46,6 +49,6 @@ export const InstalkLogoMeduim = (props) => {
           ></Image>
         </Defs>
       </Svg>
-    </View>
+    </TouchableOpacity>
   )
 }

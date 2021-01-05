@@ -2,6 +2,7 @@ import React from "react"
 import { Screen, HomeItem } from "../../components"
 import { InstalkLogoMeduim, GearSvg } from "../../components/svg"
 import { ScreenStyles, GearBox } from "./home-screen.styles"
+import { SmallText } from "../../enum/styles"
 import { HomeTrackSvg, HomeCompareSvg, HomeInteractionsSvg } from "../../components/svg"
 import { useNavigation } from "@react-navigation/native"
 
@@ -10,7 +11,8 @@ export const HomeScreen = () => {
 
   return (
     <Screen preset="fixed" style={ScreenStyles}>
-      <InstalkLogoMeduim customStyles={{ marginBottom: 80 }} />
+      <InstalkLogoMeduim />
+      <SmallText tx="loginScreen.blurryLogo" style={{ marginBottom: 50 }} />
 
       <HomeItem
         i18nInnerText="tracksScreen.sectionName"
