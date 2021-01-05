@@ -8,28 +8,28 @@ module.exports = async (page, target) => {
       )
     );
 
-    let followersUsernames = [];
+    let followersCollected = [];
 
     if (targetFollowersCount > 0) {
       await page.click('a[href*="followers"][class="-nal3 "]'); // followers link
 
       await page.waitForSelector('div[class="isgrP"]'); // scrollable followers modal
 
-      while (followersUsernames.length < targetFollowersCount) {
+      while (followersCollected.length < targetFollowersCount) {
         await page.evaluate(() => {
           document.querySelector('div[class="isgrP"]').scroll(0, 120000); // scrollable followers modal
         });
 
-        followersUsernames = await page.evaluate(() => {
-          let followersUsernamesFromWeb = Array.from(
+        followersCollected = await page.evaluate(() => {
+          let followersCollectedFromWeb = Array.from(
             document.querySelectorAll('a[class="FPmhX notranslate  _0imsa "]') // usernames list
           );
-          const followersUsernames = [...followersUsernamesFromWeb];
-          return followersUsernames.map((follower) => follower.innerText);
+          const followersCollected = [...followersCollectedFromWeb];
+          return followersCollected.map((follower) => follower.innerText);
         });
 
         console.log(
-          `found: ${followersUsernames.length}/${targetFollowersCount}`
+          `found: ${followersCollected.length}/${targetFollowersCount}`
         );
       }
 
@@ -38,7 +38,7 @@ module.exports = async (page, target) => {
       });
     }
 
-    return followersUsernames;
+    return followersCollected;
   } catch {
     throw "getFollowers error";
   }
