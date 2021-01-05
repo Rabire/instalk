@@ -23,7 +23,12 @@ module.exports = async (page, target) => {
       );
       progressBar.start(targetFollowersCount, 0);
 
+      let lastfollowersCollectedCount = 0;
+      let stuckRound = 0;
+
       while (followersCollected.length < targetFollowersCount) {
+        const actualCount = followersCollected.length;
+
         await page.evaluate(() => {
           document.querySelector('div[class="isgrP"]').scroll(0, 120000); // scrollable followers modal
         });
@@ -36,11 +41,22 @@ module.exports = async (page, target) => {
           return followersCollected.map((follower) => follower.innerText);
         });
 
-        // console.log(
-        //   `found: ${followersCollected.length}/${targetFollowersCount}`
-        // );
+        if (actualCount === lastfollowersCollectedCount) {
+          stuckRound++;
+        } else {
+          lastfollowersCollectedCount = actualCount;
+          stuckRound = 0;
+        }
 
-        progressBar.update(followersCollected.length);
+        if (
+          stuckRound > 500 &&
+          actualCount >
+            targetFollowersCount - Math.floor(targetFollowersCount * 0.01)
+        ) {
+          break;
+        }
+
+        progressBar.update(actualCount);
       }
 
       await progressBar.stop();
