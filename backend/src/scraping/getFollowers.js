@@ -1,3 +1,5 @@
+const cliProgress = require("cli-progress");
+
 module.exports = async (page, target) => {
   try {
     const targetFollowersCount = await page.evaluate(() =>
@@ -15,6 +17,12 @@ module.exports = async (page, target) => {
 
       await page.waitForSelector('div[class="isgrP"]'); // scrollable followers modal
 
+      const progressBar = new cliProgress.SingleBar(
+        {},
+        cliProgress.Presets.legacy
+      );
+      progressBar.start(targetFollowersCount, 0);
+
       while (followersCollected.length < targetFollowersCount) {
         await page.evaluate(() => {
           document.querySelector('div[class="isgrP"]').scroll(0, 120000); // scrollable followers modal
@@ -28,10 +36,14 @@ module.exports = async (page, target) => {
           return followersCollected.map((follower) => follower.innerText);
         });
 
-        console.log(
-          `found: ${followersCollected.length}/${targetFollowersCount}`
-        );
+        // console.log(
+        //   `found: ${followersCollected.length}/${targetFollowersCount}`
+        // );
+
+        progressBar.update(followersCollected.length);
       }
+
+      await progressBar.stop();
 
       await page.evaluate(() => {
         document.querySelectorAll('button[class="wpO6b "]')[1].click(); // close followers modal button
