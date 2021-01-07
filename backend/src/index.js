@@ -31,7 +31,7 @@ const cron = require("node-cron");
   });
   await page.click('button[class="aOOlW  bIiDR  "]'); // accept button
 
-  cron.schedule("40 22 * * *", function () {
+  cron.schedule("00 00 * * *", function () {
     getTargetsDataNightJob(page);
   });
 })();
