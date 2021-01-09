@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const getTargetsDataNightJob = require("./recurrent-tasks/getTargetsDataNightJob");
-// const { TargetData, Target } = require("./models");
+const { TargetData, Target, InstagramCredentials } = require("./models");
 
 const nightBot = (async () => {
   const browser = await puppeteer.launch({
@@ -19,6 +19,19 @@ const nightBot = (async () => {
 
   await browser.close();
 })();
+
+// InstagramCredentials.create({
+//   ownerId: "1",
+//   username: "rabire_",
+//   password: "motdepasse",
+// });
+
+// Target.update(
+//   { credentialsToAccessId: 2 },
+//   {
+//     where: { id: 7 },
+//   }
+// );
 
 // const notFollowingBack = recentFollowing.filter(
 //   (x) => !recentFollowers.includes(x)
